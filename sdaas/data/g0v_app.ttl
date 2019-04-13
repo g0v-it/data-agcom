@@ -1,0 +1,45 @@
+#
+# Inps application configuration
+#
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bgo: <http://linkeddata.center/lodmap-bgo/v1#> .
+@prefix resource: <http://agcom.linkeddata.cloud/resource/> .
+@base <https://data.agcom.g0v.it/ldp/> .
+
+
+<accounts#bubbleGraph> a bgo:BubbleGraph ;
+	dct:source resource:ds_2019_02;
+	dct:title "Analisi rilevazioni visibilità in TV"@it ;
+	dct:description "Analisi dei tempi di parola in programmi TV da parte di soggetti politici e istituzionali."@it ;
+	bgo:um "Secondi";
+    bgo:partitionScheme 
+        <accounts#default> ,
+        <accounts#programma>,
+        <accounts#emittente> ,
+        <accounts#editore>
+.
+
+#
+# NOTE: the partitionSchemeId lexical order determines the order of the buttons in the bubble graph.
+#
+<accounts#default>
+	bgo:partitionSchemeId "default" ;
+	dct:title "tutto"@it
+.
+	
+<accounts#programma>
+	bgo:partitionSchemeId "p1_programma" ;
+	dct:title "programma"@it
+.
+
+<accounts#emittente>
+	bgo:partitionSchemeId "p2_emittente" ;
+	dct:title "emittente"@it
+.
+
+<accounts#editore>
+	bgo:partitionSchemeId "p3_editore" ;
+	dct:title "editore"@it
+.
+

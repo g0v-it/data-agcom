@@ -1,0 +1,69 @@
+#
+# Cleanup ACOM data and materialize missing RDF triples
+#
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
+
+
+##
+## AXIOM: agcom:subject refers to the broader resource:soggetto_individuale concept
+##
+INSERT { ?concept skos:broader resource:soggetto_individuale   }
+WHERE {  
+	?observation agcom:subject ?concept .
+
+	FILTER NOT EXISTS {?concept skos:broader [] }
+}
+
+;
+
+##
+## AXIOM: by default agcom:role refers to the broader resource:soggetto_politico concept
+##
+INSERT { ?concept skos:broader resource:soggetto_politico   }
+WHERE {  
+	?observation agcom:role ?concept .
+
+	FILTER NOT EXISTS {?concept skos:broader [] }
+}
+;
+
+##
+## AXIOM: agcom:context refers to a concept that is part of the resource:programmi scheme
+##
+INSERT { ?concept skos:inScheme resource:programmi }
+WHERE {  
+	?observation agcom:context ?concept .
+
+	FILTER NOT EXISTS {?concept skos:inScheme [] }
+}
+
+;
+
+
+
+##
+## AXIOM: a resource:soggetto_individuale is a foaf:Person
+##
+INSERT { ?concept a foaf:Person }
+WHERE {  
+	?concept skos:broader resource:soggetto_individuale .
+
+	FILTER NOT EXISTS {?concept a foaf:Person }
+}
+
+;
+
+##
+## AXIOM: Create an all uppercase hiddenLabel for wikidata matching purposes
+##
+INSERT { ?concept skos:hiddenLabel ?hiddenlabel }
+WHERE {  
+    ?concept skos:broader resource:soggetto_individuale ;
+		skos:prefLabel ?label .
+	BIND( UCASE(?label) AS ?hiddenlabel ).
+
+	FILTER NOT EXISTS {?concept skos:hiddenLabel ?hiddenlabel}
+}

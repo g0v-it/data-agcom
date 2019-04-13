@@ -1,0 +1,81 @@
+#
+# Knowledge base configuration description
+#
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix kees: <http://linkeddata.center/kees/v1#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> . 
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix resource: <http://agcom.linkeddata.cloud/resource/> .
+	
+resource:welcome a kees:KnowledgeBase;
+    void:sparqlEndpoint <http://data.agcom.g0v.it/sdaas/sparql> ;
+	dct:title "data.agcom.g0v.it knowledge base"@it; 
+	dct:description "Contiene la conoscenza sulle presenze di soggetti politici e istituzionali sulle principali reti televisive."@it;
+    dct:license <https://creativecommons.org/licenses/by/3.0/>;
+	rdfs:comment 
+		"Dati estratti da documenti pubblicati da AGCOM e pesati con indici ricavati da dati AUDITEL."@it,
+		"La base della conoscenza è stata costruita utilizzando la piattaforma SDaaS™ di LinkedData.Center "@it ,
+		"La conoscenza è formalizzata attraverso Linked Data RDF e serve per alimentare l'applicazione https://agcom.g0v.it/. Per maggiori dettagli sulle ontologie e sugli strumenti utilizzati vedi https://github.com/g0v-it/data-agcom."@it ;
+	void:vocabulary <https://github.com/g0v-it/ontologies/tree/master/fr-ap>, <https://github.com/linkeddatacenter/kees>; 
+	dct:publisher resource:Copernicani ;
+	dct:creator resource:SDaaS ;
+	dct:contributor resource:Copernicani, resource:AGCOM, resource:AUDITEL, resource:Wikidata ; 
+ 	void:exampleResource 
+		resource:spd_lbf_spe_elb_cap_01_2019 ,
+		resource:spd_lbf_spe_elb_cap_01_2019_schema ;
+	void:uriSpace "http://agcom.linkeddata.cloud/resource/";
+	dct:subject <https://it.wikipedia.org/wiki/Pluralismo>;
+	foaf:page <https://agcom.g0v.it/>
+.
+
+
+resource:AGCOM a foaf:Organization; 
+    foaf:homepage <http://www.agcom.it/>;
+    foaf:name "Autorità per le garanzie nelle comunicazioni"@it ;
+    foaf:depiction <https://www.agcom.it/homepage-theme/images/layout/logo-agcom.png>;   
+	dct:title "AGCOM";
+	dct:description "Autorità per le garanzie nelle comunicazioni"@it
+.
+
+
+resource:Copernicani a foaf:Organization; 
+	dct:title "Associazione Copernicani";
+	dct:description "Siamo un’associazione indipendente di studenti, lavoratori, imprenditori, docenti, ricercatori e politici che hanno deciso di trasformare le proprie idee in azioni."@it;
+    foaf:homepage <https://copernicani.it/>;
+    foaf:name "Associazione Copernicani"@it;
+    foaf:depiction <https://copernicani.it/wp-content/uploads/cropped-logo_orizzontale_trasparente-1-e1525161268864.png>
+.
+
+resource:SDaaS a foaf:Agent; 
+	dct:title "SDaaS platform by LinkedData.Center (community edition v 1.0.0)";
+	dct:description "Smart Data as a Sevice (SDaaS) è una piattaforma software prodotta da LinkedData.Center ."@it;
+    foaf:homepage <https://it.linkeddata.center/p/sdaas/>;
+    foaf:name "SDaaS by LinkedData.Center"@it;
+    foaf:depiction <http://linkeddata.center/resources/v4/logo/Logo-colori-trasp_oriz-640x220.png>
+    
+.
+
+resource:AUDITEL a foaf:Organization; 
+    foaf:homepage <http://www.auditel.it/>;
+    foaf:name "Auditel è una Società “super partes” che rileva l’ascolto della televisione in Italia conseguito attraverso le diverse modalità di trasmissione."@it ;
+    foaf:depiction <http://www.auditel.it/media/img/auditel_logo_transparent_300.png>;   
+	dct:title "AUDITEL";
+	dct:description "Auditel è una Società “super partes” che rileva l’ascolto della televisione in Italia conseguito attraverso le diverse modalità di trasmissione."@it
+.
+
+
+resource:Wikidata a foaf:Organization; 
+    foaf:homepage <https://www.wikidata.org>;
+    foaf:name "Wikidata is a free and open knowledge base that can be read and edited by both humans and machines."@en ;
+    foaf:depiction <https://www.wikidata.org/wiki/Q2013#/media/File:Wikidata-logo-en.svg>;   
+	dct:title "Wikidata";
+	dct:description "Wikidata is a free and open knowledge base that can be read and edited by both humans and machines."@en
+.
+

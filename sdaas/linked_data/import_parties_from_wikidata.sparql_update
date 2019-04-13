@@ -1,0 +1,22 @@
+#
+# Link agcom resource to linkeddata ones and import data
+#
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+
+
+
+# Import frow wikidata all active political parties
+INSERT {?partito skos:prefLabel ?label } 
+WHERE {
+  SERVICE <https://query.wikidata.org/sparql> {
+      ?partito wdt:P31 wd:Q7278 ; # parito politico
+        wdt:P17 wd:Q38 ; #italiano
+        rdfs:label ?label. 
+      FILTER( LANG(?label)="it").
+      FILTER NOT EXISTS { ?partito wdt:P576 [] } # Non disciolto
+  }
+}

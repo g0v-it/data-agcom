@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+set -a
+
+GRAPH="http://agcom.linkeddata.cloud/resource/"
+
+# Generate data from test file
+php gateways/tests/build_agcom.php < gateways/tests/data/agcom-test.csv > data/2019_02_agcom.ttl
+
+
+####################################################
+SD_LOG  "Start learning window..."
+####################################################
+SD_LEARN urn:sdaas:config "data/kees.ttl"
+SD_LEARN "${GRAPH}g0v_app_graph" "data/g0v_app.ttl"
+
+SD_LEARN "${GRAPH}agcom_resources_graph" "data/agcom_resources.ttl"
+SD_LEARN "${GRAPH}2019_02_agcom_graph" data/2019_02_agcom.ttl
+SD_LEARN "${GRAPH}2018_auditel_graph" data/2018_auditel.ttl
+
+SD_LEARN http://g0v-it.github.io/ontologies/agcom https://g0v-it.github.io/ontologies/agcom/v1.ttl
+SD_LEARN http://g0v-it.github.io/ontologies/auditel https://g0v-it.github.io/ontologies/auditel/v1.ttl
+
+SD_LEARN http://reference.data.gov.uk/id/gregorian-year/2018
+SD_LEARN http://reference.data.gov.uk/id/gregorian-month/2019-02
+
+####################################################
+SD_LOG  "Linking data... "
+####################################################
+SD_SPARQL_UPDATE @linked_data/import_from_manual_links.sparql_update
+SD_SPARQL_UPDATE @linked_data/import_parties_from_wikidata.sparql_update
+SD_SPARQL_UPDATE @linked_data/import_politicians_from_wikidata.sparql_update
+SD_SPARQL_UPDATE @linked_data/import_tv_channels_from_wikidata.sparql_update
+
+####################################################
+SD_LOG  "Starting reasoning window... "
+####################################################
+SD_SPARQL_UPDATE @axioms/005_agcom_cleancing.sparql_update
+SD_SPARQL_UPDATE @axioms/010_skos-axioms.sparql_update
+SD_SPARQL_UPDATE @axioms/020_discover_links.sparql_update
+SD_SPARQL_UPDATE @axioms/022_find_missing_pref_labels.sparql_update
+SD_SPARQL_UPDATE @axioms/023_find_missing_person_img.sparql_update
+#SD_SPARQL_UPDATE @axioms/024_compute_nst.sparql_update
+#SD_SPARQL_UPDATE @axioms/025_compute_bwi.sparql_update
+SD_SPARQL_UPDATE @axioms/030_make_bubbles.sparql_update
+#SD_SPARQL_UPDATE @axioms/035_make_bubbles_history.sparql_update
+#SD_SPARQL_UPDATE @axioms/036_make_bubbles_previous_value.sparql_update
+SD_SPARQL_UPDATE @axioms/040_make_bubblegraph.sparql_update
+
+
+####################################################
+SD_LOG  "Testing..."
+####################################################
+for testFile in $(ls -v tests/*ask); do
+    echo -n "   $(basename $testFile)..."
+    case "$(SD_SPARQL_QUERY xml @$testFile)" in
+        *true* ) echo "OK";;
+        *false* ) echo "FAIL";;
+    esac
+done
+
+
+SD_THATS_ALL_FOLKS

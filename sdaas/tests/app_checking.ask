@@ -1,0 +1,13 @@
+##################################
+# Test lodmap constraints
+################################## 
+PREFIX fr: <http://linkeddata.center/botk-fr/v1#>
+PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#> 
+PREFIX dct: <http://purl.org/dc/terms/> 
+
+ASK {
+	# Just one bgo exists
+    ?bgo a bgo:BubbleGraph.
+    FILTER NOT EXISTS { ?bgo2 a bgo:BubbleGraph FILTER (?bgo != ?bgo2) }  
+}
+    

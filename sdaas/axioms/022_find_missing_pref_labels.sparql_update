@@ -1,0 +1,16 @@
+#
+# Find missing prefLabels
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+
+INSERT { ?concept skos:prefLabel ?prefLabel }
+WHERE {  
+	?concept a skos:Concept .
+	OPTIONAL { 
+		?concept owl:sameAs/skos:prefLabel ?inferedLabel ;
+		FILTER( LANG(?inferedLabel) = "it" ) 
+	}
+  	BIND( COALESCE(?inferedLabel, STRLANG(STRAFTER(STR(?concept), "http://agcom.linkeddata.cloud/resource/"),"it")) AS ?prefLabel)
+  	
+  	FILTER NOT EXISTS { ?concept skos:prefLabel [] }
+}

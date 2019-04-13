@@ -1,0 +1,109 @@
+#
+# Default metadata for BubbleGraph
+#
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
+PREFIX accounts: <https://data.agcom.g0v.it/ldp/accounts#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#>
+PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
+#
+# Set  Bubble Graph title from source dataset
+#
+INSERT { ?bgo dct:title ?title } 
+WHERE {
+ 	?bgo a bgo:BubbleGraph ; 
+ 		dct:source/dct:title ?title . 
+ 	
+	FILTER NOT EXISTS { ?bgo dct:title  []}
+}
+
+;
+
+#
+# Set  Bubble Graph description from source dataset
+#
+INSERT { ?bgo dct:description ?description } 
+WHERE {
+ 	?bgo a bgo:BubbleGraph ; 
+ 		dct:source/dct:description ?description . 
+ 	
+	FILTER NOT EXISTS { ?bgo dct:description  []}
+}
+
+;
+
+
+#
+# Create partition schema for account:programma
+#
+INSERT {
+  accounts:programma bgo:partition ?partitionUri.
+  ?partitionUri bgo:label ?partitionLabel; 
+  	bgo:partitionAmount ?partitionAmount.
+} 
+WHERE {
+  {
+    SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
+      ?bubble a bgo:Account ; 
+                bgo:partitionLabel ?partitionLabel ;
+                bgo:amount ?amount .
+
+      resource:programmi skos:hasTopConcept/skos:prefLabel ?partitionLabel
+    } GROUP BY ?partitionLabel
+  }
+
+  BIND( IRI(CONCAT( STR(accounts:), "programma_", MD5(STR(?partitionLabel)))) AS ?partitionUri ) 
+}
+
+;
+
+
+
+#
+# Create partition schema for account:emittente
+#
+INSERT {
+  accounts:emittente bgo:partition ?partitionUri.
+  ?partitionUri bgo:label ?partitionLabel; 
+  	bgo:partitionAmount ?partitionAmount.
+} 
+WHERE {
+  {
+    SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
+      ?bubble a bgo:Account ; 
+                bgo:partitionLabel ?partitionLabel ;
+                bgo:amount ?amount .
+
+      resource:emittenti skos:hasTopConcept/skos:prefLabel ?partitionLabel
+    } GROUP BY ?partitionLabel
+  }
+
+  BIND( IRI(CONCAT( STR(accounts:), "emittente_", MD5(STR(?partitionLabel)))) AS ?partitionUri ) 
+}
+
+;
+
+
+#
+# Create partition schema for account:editore
+#
+INSERT {
+  accounts:editore bgo:partition ?partitionUri.
+  ?partitionUri bgo:label ?partitionLabel; 
+  	bgo:partitionAmount ?partitionAmount.
+} 
+WHERE {
+  {
+    SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
+      ?bubble a bgo:Account ; 
+                bgo:partitionLabel ?partitionLabel ;
+                bgo:amount ?amount .
+
+      resource:editori skos:hasTopConcept/skos:prefLabel ?partitionLabel
+    } GROUP BY ?partitionLabel
+  }
+
+  BIND( IRI(CONCAT( STR(accounts:), "editore_", MD5(STR(?partitionLabel)))) AS ?partitionUri ) 
+}
+

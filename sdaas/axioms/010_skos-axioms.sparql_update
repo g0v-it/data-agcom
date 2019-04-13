@@ -1,0 +1,109 @@
+#
+# Some standard reasoning about skos concepts
+#
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+
+##
+## SKOS AXIOM: infer Concept type from functional properties (partial)
+##
+INSERT { ?concept a skos:Concept }
+WHERE {  
+	
+	VALUES ?functionalProperty { 
+		skos:broader 
+		skos:narrower 
+		skos:prefLabel 
+		skos:hiddenLabel 
+		skos:altLabel 
+		skos:notation 
+		skos:inScheme 
+		skos:closeMatch
+		skos:related
+	}
+	
+	{ ?concept ?functionalProperty ?value }
+	UNION
+	{ ?scheme skos:hasTopConcept ?concept }
+
+	FILTER NOT EXISTS {?concept a skos:Concept }
+}
+
+;
+
+##
+## SKOS AXIOM: infer ConceptScheme type from functional properties (partial)
+##
+INSERT { ?scheme a skos:ConceptScheme }
+WHERE {  
+
+	{ ?scheme skos:hasTopConcept ?value}
+	UNION
+	{ ?concept skos:inScheme ?scheme }
+
+	FILTER NOT EXISTS {?scheme a skos:ConceptScheme }
+}
+
+;
+
+
+
+##
+## SKOS AXIOM: infer narrower concepts
+##
+INSERT { ?broader_concept skos:narrower ?narrower_concept }
+WHERE { 
+	?narrower_concept skos:broader ?broader_concept .
+
+	FILTER NOT EXISTS {?broader_concept skos:narrower ?narrower_concept}
+}
+
+;
+
+##
+## SKOS AXIOM: infer broader concepts
+##
+INSERT { ?narrower_concept skos:broader ?broader_concept }
+WHERE {  
+	?broader_concept skos:narrower ?narrower_concept .
+
+	FILTER NOT EXISTS {?narrower_concept skos:broader ?broader_concept}
+}
+
+;
+
+##
+## SKOS AXIOM: infer top concepts
+##
+INSERT { ?scheme skos:hasTopConcept ?concept}
+WHERE {  
+	?concept skos:inScheme ?scheme .
+
+	FILTER NOT EXISTS {?concept skos:broader []}
+	FILTER NOT EXISTS {?scheme skos:hasTopConcept ?concept}
+}
+
+;
+
+##
+## SKOS AXIOM: infer skos:inScheme property for top concepts
+##
+INSERT { ?concept skos:inScheme ?scheme }
+WHERE {  
+	?scheme skos:hasTopConcept ?concept
+
+	FILTER NOT EXISTS {?concept skos:inScheme ?scheme}
+}
+
+;
+
+##
+## AXIOM: hinerit inScheme from broader concepts
+##
+INSERT { ?concept skos:inScheme ?scheme }
+WHERE {  
+	?concept skos:broader*/skos:inScheme ?scheme .
+
+	FILTER NOT EXISTS {?concept skos:inScheme [] }
+}
+

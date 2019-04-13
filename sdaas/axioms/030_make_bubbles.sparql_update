@@ -1,0 +1,87 @@
+#
+# Create bubbles AGCOM observations 
+#
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX interval: <http://reference.data.gov.uk/def/intervals/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
+PREFIX scv: <http://purl.org/NET/scovo#>
+PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#>
+PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
+
+
+INSERT { 
+   ?bubbleUri a bgo:Account ;
+		bgo:inBubbleGraph ?bgo ;
+		bgo:code ?code ;
+		dct:title ?title ;
+		dct:subject ?description ;
+		dct:source ?observation ;
+		bgo:amount ?amount ;
+		bgo:version ?version ;
+        bgo:background ?background ;
+		bgo:partitionLabel 
+			?labelProgramma, 
+			?labelEmittente,
+			?labelEditore
+} 
+WHERE {
+
+	?bgo a bgo:BubbleGraph ; dct:source ?ds .
+  	?ds a qb:DataSet ;
+  		agcom:refPeriod ?refPeriod.
+  	?refPeriod skos:prefLabel ?refPeriodLabel.
+  	BIND( STRAFTER(?refPeriodLabel,"Gregorian ") AS ?version)
+  	
+
+	?observation a qb:Observation ;
+		qb:dataSet ?ds ;
+		agcom:subject ?subject ;
+		agcom:speakingTime ?amount 
+	.
+	
+
+  	# Il titolo della bolla è la prefLabel del soggetto della rilevazione.
+	?subject skos:prefLabel ?title .
+	
+	# Il background è l'immagine del politico che parla (se c'e')
+	OPTIONAL { ?subject foaf:img ?background } 
+	
+	# Il subject  la prefLabel del contesto 
+	?observation agcom:context/skos:prefLabel ?description  . 
+	
+	
+	# Il programma TV è la prima partizione
+	?observation agcom:context ?context.
+	?context skos:prefLabel ?labelProgramma.
+	
+	# L'emittente del programma è la seconda partizione
+	?context skos:related ?emittente .
+	?emittente skos:inScheme resource:emittenti;
+		skos:prefLabel ?labelEmittente . 
+	
+	# L'editore  della missiome è la terza partizione
+	?emittente skos:related ?editore .
+	?editore skos:inScheme resource:editori;
+  		skos:prefLabel ?labelEditore.
+  
+  
+  BIND( MD5(STR(?observation)) AS ?code)	
+  BIND( IRI( CONCAT("https://data.agcom.g0v.it/ldp/account/",?code,"#data")) AS ?bubbleUri)
+}
+
+;
+
+
+#
+#  Create comments
+#
+INSERT { ?bubbleUri dct:description ?description} 
+WHERE {
+	?bubbleUri a bgo:Account ; dct:source/rdfs:comment ?description .
+	FILTER NOT EXISTS { ?bubbleUri dct:description [] }
+}
+

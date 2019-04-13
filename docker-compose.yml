@@ -1,0 +1,12 @@
+version: '3'
+services:
+  sdaas:
+    build: ./sdaas
+    ports:
+      - "29421:8080"
+  api:
+    build: ./apis
+    ports:
+      - "29422:80"
+    depends_on:
+      - "sdaas"

@@ -1,0 +1,39 @@
+#
+# TEST: tutti i soggetti individuali sono completti dei dati essenziali
+#
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX qb: <http://purl.org/linked-data/cube#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX dct: <http://purl.org/dc/terms/> 
+PREFIX foaf: <http://xmlns.com/foaf/0.1/> 
+PREFIX interval: <http://reference.data.gov.uk/def/intervals/> 
+PREFIX sdmx-subject: <http://purl.org/linked-data/sdmx/2009/subject#> 
+PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#> 
+PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
+
+
+
+ASK WHERE {
+
+  {
+    SELECT (COUNT( distinct ?subject) as ?completedSubjects) WHERE {
+      ?subject a skos:Concept, foaf:Person ; 
+          skos:inScheme resource:soggetti ;
+          skos:broader resource:soggetto_individuale ;
+          skos:prefLabel ?label ;
+	  FILTER( lang(?label) = "it") 
+    }
+  }
+  
+  {
+    SELECT (COUNT( distinct ?subject) as ?allSubjects) WHERE {
+      ?observation agcom:subject ?subject
+    }
+  }
+  
+  FILTER( ?allSubjects > 100 )
+  FILTER( ?completedSubjects = ?allSubjects )
+}

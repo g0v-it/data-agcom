@@ -1,0 +1,20 @@
+#
+# Link agcom resource to linkeddata ones and import data
+#
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+
+
+# Import frow wikidata all italian tv-channel
+INSERT {
+  	?emittente skos:prefLabel ?label 
+} WHERE {
+  SERVICE <https://query.wikidata.org/sparql> {
+	  # emittente o canale televisivo
+	  {?emittente wdt:P31 wd:Q1616075 } UNION {?emittente wdt:P31 wd:Q2001305 }
+	  ?emittente wdt:P17 wd:Q38 ; rdfs:label ?label . FILTER( LANG(?label)="it").
+  }
+}

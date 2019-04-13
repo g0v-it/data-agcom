@@ -1,0 +1,16 @@
+#
+# Extract unknown labels from linked data
+#
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+
+INSERT { ?concept skos:prefLabel ?label} 
+WHERE {
+  ?concept owl:sameAs ?wikiItem .
+  
+  SERVICE <https://query.wikidata.org/sparql> {
+	  ?wikiItem rdfs:label ?label . FILTER( LANG(?label)="it").
+  }
+  FILTER NOT EXISTS { ?concept skos:prefLabel [] }
+}

@@ -1,0 +1,13 @@
+#
+# TEST: esiste una sola prefLabel per la lingua italiana per ogni concetto distinto
+#
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+
+ASK {
+    ?concept a skos:Concept; skos:prefLabel ?label1 . 
+    FILTER (LANG(?label1)= "it")
+    FILTER NOT EXISTS {  
+    	?concept skos:prefLabel ?label2 
+    	FILTER (LANG(?label2)="it" && ?label1 != ?label2) 
+    }
+}

@@ -1,0 +1,164 @@
+#
+# Taxonomy definitions and other  manually enriched data
+#
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix resource: <http://agcom.linkeddata.cloud/resource/> . 
+
+#
+# Tassonomia programmi
+#
+resource:programmi a skos:ConceptScheme ;
+	dct:source <https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019/c67039b0-a0b1-4517-8c31-31802926d37a?version=1.0> ;
+    dct:title "Programmi televisivi monitorati da AGCOM"@it ;
+    dct:description "Telegiornali e programmi extra-Tg monitorati nelle rilevazioni AGCOM"@it
+.
+
+#
+# Tassonomia emittenti, manually compiled
+#
+resource:emittenti a skos:ConceptScheme ;
+	dct:source <https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019/c67039b0-a0b1-4517-8c31-31802926d37a?version=1.0> ;
+    dct:title "Canali televisivi"@it ;
+    dct:description "Emittenti che trasmettono programmi televisivi"@it ;
+    skos:hasTopConcept
+		resource:Canale_5_emittente,
+		resource:La7_emittente,
+		resource:Rai_1_emittente,
+		resource:Rai_2_emittente,
+		resource:Rai_3_emittente,
+		resource:RaiNews24_emittente,
+		resource:Rete_4_emittente,
+		resource:SkyTg24_emittente,
+		resource:Italia_1_emittente,
+		resource:TgCom24_emittente
+.
+
+#
+# Tassonomia editori; manually compiled
+#
+resource:editori a skos:ConceptScheme ;
+	dct:source <https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019/c67039b0-a0b1-4517-8c31-31802926d37a?version=1.0> ;
+    dct:title "Editori "@it ;
+    dct:description "Editori televisivi delle emittenti"@it ;
+    skos:hasTopConcept
+		resource:Mediaset_editore,
+		resource:Cairo_editore,
+		resource:Rai_editore,
+		resource:Sky_Italia_editore
+.
+
+#
+# Tassonomia soggetti AGCOM
+#
+resource:soggetti a skos:ConceptScheme ;
+    dct:title "Tassonomia soggetti individuali, politici e istituzionali AGCOM"@it;
+    skos:hasTopConcept 
+    	resource:soggetto_individuale,
+    	resource:soggetto_politico,
+    	resource:soggetto_istituzionale;
+.
+
+# ------------  Manually defined labels -----------
+resource:soggetto_istituzionale skos:prefLabel "Soggetto istituzionale"@it .
+resource:soggetto_politico skos:prefLabel "Soggetto politico"@it .
+resource:soggetto_individuale skos:prefLabel "Soggetto individuale"@it .
+
+
+# ------------ manually defined skos concept relation -----------
+resource:Governo skos:broader resource:soggetto_istituzionale .
+resource:Presidente_del_Consiglio skos:broader resource:soggetto_istituzionale .
+resource:Presidente_della_Repubblica skos:broader resource:soggetto_istituzionale .
+resource:Presidente_della_Camera skos:broader resource:soggetto_istituzionale .
+resource:Unione_Europea skos:broader resource:soggetto_istituzionale .
+
+resource:Canale_5_emittente skos:related resource:Mediaset_editore .
+resource:La7_emittente skos:related resource:Cairo_editore .
+resource:Rai_1_emittente skos:related resource:Rai_editore .
+resource:Rai_2_emittente skos:related resource:Rai_editore .
+resource:Rai_3_emittente skos:related resource:Rai_editore  .
+resource:RaiNews24_emittente skos:related resource:Rai_editore .
+resource:Rete_4_emittente skos:related resource:Mediaset_editore  .
+resource:SkyTg24_emittente skos:related resource:Sky_Italia_editore  .
+resource:Italia_1_emittente skos:related resource:Mediaset_editore  .
+resource:TgCom24_emittente skos:related resource:Mediaset_editore  .
+
+resource:Tg1_programma skos:related resource:Rai_1_emittente .
+resource:Tg2_programma skos:related resource:Rai_2_emittente .
+resource:Tg3_programma skos:related resource:Rai_3_emittente .
+resource:Tg4_programma skos:related resource:Rete_4_emittente .
+resource:Tg5_programma skos:related resource:Canale_5_emittente .
+resource:Studio_Aperto_programma skos:related resource:Italia_1_emittente .
+resource:TgCom24_programma skos:related resource:TgCom24_emittente .
+resource:TgCom24-extra_tg_programma skos:related resource:TgCom24_emittente .
+resource:Canale_5-extra_tg_programma skos:related resource:Canale_5_emittente .
+resource:La7_programma skos:related resource:La7_emittente .
+resource:La7-extra_tg_programma skos:related resource:La7_emittente .
+resource:Rai_1-extra_tg_programma skos:related resource:Rai_1_emittente .
+resource:Rai_2-extra_tg_programma skos:related resource:Rai_2_emittente .
+resource:Rai_3-extra_tg_programma skos:related resource:Rai_3_emittente .
+resource:Rai_News_programma skos:related resource:RaiNews24_emittente .
+resource:Rai_News-extra_tg_programma skos:related resource:Rainews24_emittente .
+resource:Rete_4-extra_tg_programma skos:related resource:Rete_4_emittente .
+resource:Sky_Tg24_programma skos:related resource:SkyTg24_emittente .
+resource:Sky_Tg24-extra_tg_programma skos:related resource:SkyTg24_emittente .
+
+
+# -----------Manually validated linked data ---------------------------
+resource:Berlusconi_Silvio owl:sameAs <http://www.wikidata.org/entity/Q11860> .
+resource:Salvini_Matteo owl:sameAs <http://www.wikidata.org/entity/Q1055449> .
+resource:Di_Maio_Luigi owl:sameAs <http://www.wikidata.org/entity/Q13581225> .
+resource:Conte_Giuseppe owl:sameAs <http://www.wikidata.org/entity/Q53844829> .
+resource:Martina_Maurizio owl:sameAs <http://www.wikidata.org/entity/Q13371788> .
+resource:Zingaretti_Nicola owl:sameAs <http://www.wikidata.org/entity/Q1332769> .
+resource:Renzi_Matteo owl:sameAs <http://www.wikidata.org/entity/Q47563> .
+resource:Corrao_Ignazio owl:sameAs <http://www.wikidata.org/entity/Q16977486> .
+resource:Giachetti_Roberto owl:sameAs <http://www.wikidata.org/entity/Q3938844> .
+resource:Mattarella_Sergio owl:sameAs <http://www.wikidata.org/entity/Q3956186> .
+resource:Meloni_Giorgia owl:sameAs <http://www.wikidata.org/entity/Q451791> .
+resource:Giarrusso_Dino owl:sameAs <http://www.wikidata.org/entity/Q50221206> .
+resource:Tajani_Antonio owl:sameAs <http://www.wikidata.org/entity/Q440710> .
+resource:Gasparri_Maurizio owl:sameAs <http://www.wikidata.org/entity/Q431345> .
+resource:Baldino_Vittoria owl:sameAs <http://www.wikidata.org/entity/> .
+resource:Centinaio_Gian_Marco owl:sameAs <http://www.wikidata.org/entity/Q15896991> .
+resource:Tria_Giovanni owl:sameAs <http://www.wikidata.org/entity/Q54555492> .
+resource:Bersani_Pierluigi owl:sameAs <http://www.wikidata.org/entity/Q47556> .
+resource:Carabetta_Luca owl:sameAs <http://www.wikidata.org/entity/Q62091235> .
+resource:Calenda_Carlo owl:sameAs <http://www.wikidata.org/entity/Q12467437> .
+
+resource:Forza_Italia owl:sameAs <http://www.wikidata.org/entity/Q14924303> .
+resource:Fratelli_d_Italia owl:sameAs <http://www.wikidata.org/entity/Q1757843> .
+resource:Lega owl:sameAs <http://www.wikidata.org/entity/Q47750> .
+resource:Lega_Nord owl:sameAs <http://www.wikidata.org/entity/Q47750> .
+resource:Liberi_e_Uguali owl:sameAs <http://www.wikidata.org/entity/Q44929224> .
+resource:M5S owl:sameAs <http://www.wikidata.org/entity/Q47817> .
+resource:PD owl:sameAs <http://www.wikidata.org/entity/Q47729> .
+resource:Per_le_Autonomie-Minoranze_linguistiche owl:sameAs <http://www.wikidata.org/entity/Q12857400> .
+resource:PiuEuropa-Centro_Democratico owl:sameAs <http://www.wikidata.org/entity/Q47090559> .
+
+resource:Governo owl:sameAs <http://www.wikidata.org/entity/Q3773971> .
+resource:Presidente_del_Consiglio owl:sameAs <http://www.wikidata.org/entity/Q796897> .
+resource:Presidente_della_Camera owl:sameAs <http://www.wikidata.org/entity/Q6360077> .
+resource:Presidente_della_Repubblica owl:sameAs <http://www.wikidata.org/entity/Q332711> .
+resource:Unione_Europea owl:sameAs <http://www.wikidata.org/entity/Q458> .
+
+
+resource:Mediaset_editore owl:sameAs <http://www.wikidata.org/entity/Q368151> .
+resource:Cairo_editore owl:sameAs <http://www.wikidata.org/entity/Q3649899> .
+resource:Rai_editore owl:sameAs <http://www.wikidata.org/entity/Q19616> .
+resource:Sky_Italia_editore  owl:sameAs <http://www.wikidata.org/entity/Q796719> .
+
+
+resource:Canale_5_emittente owl:sameAs <http://www.wikidata.org/entity/Q617643> .
+resource:La7_emittente owl:sameAs <http://www.wikidata.org/entity/Q1235261> .
+resource:Rai_1_emittente owl:sameAs <http://www.wikidata.org/entity/Q258131> .
+resource:Rai_2_emittente owl:sameAs <http://www.wikidata.org/entity/Q914349> .
+resource:Rai_3_emittente owl:sameAs <http://www.wikidata.org/entity/Q643447> .
+resource:RaiNews24_emittente owl:sameAs <http://www.wikidata.org/entity/Q125875> .
+resource:Rete_4_emittente owl:sameAs <http://www.wikidata.org/entity/Q1088023> .
+resource:SkyTg24_emittente owl:sameAs <http://www.wikidata.org/entity/Q1174202> .
+resource:Italia_1_emittente owl:sameAs <http://www.wikidata.org/entity/Q536346> .
+resource:TgCom24_emittente owl:sameAs <http://www.wikidata.org/entity/Q3979545> .
+
+

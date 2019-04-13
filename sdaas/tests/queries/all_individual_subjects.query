@@ -1,0 +1,45 @@
+#
+# TEST: tutti gli individui che parlano ordinati per secondi parlati
+#
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX qb: <http://purl.org/linked-data/cube#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX dct: <http://purl.org/dc/terms/> 
+PREFIX foaf: <http://xmlns.com/foaf/0.1/> 
+PREFIX interval: <http://reference.data.gov.uk/def/intervals/> 
+PREFIX sdmx-subject: <http://purl.org/linked-data/sdmx/2009/subject#> 
+PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#> 
+PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
+
+
+
+SELECT ?nome ?secondi_di_parola ?da_data ?a_data WHERE {
+	{
+		SELECT ?soggetto (SUM(?time) AS ?secondi_di_parola ) WHERE {	
+			?observation qb:dataSet ?dataset; 
+				agcom:subject ?soggetto;
+                agcom:speakingTime ?time .
+			?dataset qb:structure agcom:rilevazioni_pluralismo 
+		} GROUP BY ?soggetto
+	}	 
+	{
+		SELECT ?da_data  WHERE {	
+			?observation qb:dataSet ?dataset. 
+			?dataset qb:structure agcom:rilevazioni_pluralismo; agcom:refPeriod ?period.
+        	?period <http://purl.org/NET/scovo#min> ?da_data.
+		} ORDER BY ?da_data LIMIT 1
+	}
+	{
+		SELECT ?a_data  WHERE {	
+			?observation qb:dataSet ?dataset. 
+			?dataset qb:structure agcom:rilevazioni_pluralismo; agcom:refPeriod ?period.
+        	?period <http://purl.org/NET/scovo#max> ?a_data.
+		} ORDER BY DESC(?a_data) LIMIT 1
+	}
+
+  	?soggetto foaf:name ?nome
+
+} ORDER BY DESC(?secondi_di_parola)
