@@ -70,7 +70,8 @@ exports.parseAccounts = async (data, accept) => {
             json['amount'] = parseFloat(store.any(account, BGO("amount")).value);
             json['previousValue'] = store.any(account, BGO("previousValue")) ? parseFloat(store.any(account, BGO("previousValue")).value) : undefined;
             json['subject'] = store.any(account, DCT("subject")).value;
-            json['background'] = store.any(account, BGO("background")) ? store.any(account, BGO("background")).value : undefined;
+            bg = store.any(account, BGO("background"));
+            json['background'] = bg ? bg.value : undefined;
             json["partitionLabel"] = [];
             store.each(account, BGO("partitionLabel")).forEach((partition) => {
                 json["partitionLabel"].push(partition.value);

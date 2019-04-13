@@ -65,6 +65,9 @@ resource:soggetto_istituzionale skos:prefLabel "Soggetto istituzionale"@it .
 resource:soggetto_politico skos:prefLabel "Soggetto politico"@it .
 resource:soggetto_individuale skos:prefLabel "Soggetto individuale"@it .
 
+resource:La7_emittente skos:prefLabel "La7 (emittente)"@it .
+resource:SkyTg24_emittente skos:prefLabel "SkyTg24 (emittente)"@it .
+resource:TgCom24_emittente skos:prefLabel "TgCom24 (emittente)"@it .
 
 # ------------ manually defined skos concept relation -----------
 resource:Governo skos:broader resource:soggetto_istituzionale .

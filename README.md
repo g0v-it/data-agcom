@@ -53,11 +53,11 @@ This starts locally the following services:
 
 | Name        | Description                                                   | Port 
 | ----------- | ------------------------------------------------------------- | ------- 
-| sdaas       | a server that manages the datastore and the ingestion engine  | 29421    
-| api         | a server that manages the web-budget api                      | 29422 
+| sdaas       | a server that manages the datastore and the ingestion engine  | 29341    
+| api         | a server that manages the web-budget api                      | 29342 
 
-Try http://localhost:29421/sdaas to access blazegraph workbench
-Try http://localhost:29422/ to test api endpoint
+Try http://localhost:29341/sdaas to access blazegraph workbench
+Try http://localhost:29342/ to test api endpoint
 
 The first time you start the containers, Docker downloads and builds images for you. It will take some time, but don't worry
 this is done only once. Starting servers will then be lightning fast.
