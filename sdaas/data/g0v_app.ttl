@@ -10,12 +10,13 @@
 
 <accounts#bubbleGraph> a bgo:BubbleGraph ;
 	dct:source resource:ds_2019_02;
-	dct:title "Analisi rilevazioni visibilità in TV"@it ;
-	dct:description "Analisi dei tempi di parola in programmi TV da parte di soggetti politici e istituzionali."@it ;
+	dct:title "Visibilità della politica in TV"@it ;
+	dct:description "Analisi dei tempi di parola di soggetti politici e istituzionali nei programmi TV."@it ;
 	bgo:um "Secondi";
     bgo:partitionScheme 
         <accounts#default> ,
-        <accounts#programma>,
+        <accounts#soggetto>,
+        <accounts#ruolo>,
         <accounts#emittente> ,
         <accounts#editore>
 .
@@ -28,18 +29,23 @@
 	dct:title "tutto"@it
 .
 	
-<accounts#programma>
-	bgo:partitionSchemeId "p1_programma" ;
-	dct:title "programma"@it
+<accounts#soggetto>
+	bgo:partitionSchemeId "p1_soggetto" ;
+	dct:title "soggetto"@it
+.
+
+<accounts#ruolo>
+	bgo:partitionSchemeId "p2_ruolo" ;
+	dct:title "ruolo"@it
 .
 
 <accounts#emittente>
-	bgo:partitionSchemeId "p2_emittente" ;
+	bgo:partitionSchemeId "p3_emittente" ;
 	dct:title "emittente"@it
 .
 
 <accounts#editore>
-	bgo:partitionSchemeId "p3_editore" ;
+	bgo:partitionSchemeId "p4_editore" ;
 	dct:title "editore"@it
 .
 

@@ -35,10 +35,10 @@ WHERE {
 
 
 #
-# Create partition schema for account:programma
+# Create partition schema for account:soggetto
 #
 INSERT {
-  accounts:programma bgo:partition ?partitionUri.
+  accounts:soggetto bgo:partition ?partitionUri.
   ?partitionUri bgo:label ?partitionLabel; 
   	bgo:partitionAmount ?partitionAmount.
 } 
@@ -47,18 +47,39 @@ WHERE {
     SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
       ?bubble a bgo:Account ; 
                 bgo:partitionLabel ?partitionLabel ;
+                dct:source/agcom:subject/skos:prefLabel ?partitionLabel ;
                 bgo:amount ?amount .
-
-      resource:programmi skos:hasTopConcept/skos:prefLabel ?partitionLabel
     } GROUP BY ?partitionLabel
   }
 
-  BIND( IRI(CONCAT( STR(accounts:), "programma_", MD5(STR(?partitionLabel)))) AS ?partitionUri ) 
+  BIND( IRI(CONCAT( STR(accounts:), "soggetto_", MD5(STR(?partitionLabel)))) AS ?partitionUri ) 
 }
 
 ;
 
 
+#
+# Create partition schema for account:ruolo
+#
+INSERT {
+  accounts:ruolo bgo:partition ?partitionUri.
+  ?partitionUri bgo:label ?partitionLabel; 
+  	bgo:partitionAmount ?partitionAmount.
+} 
+WHERE {
+  {
+    SELECT DISTINCT ?partitionLabel ( SUM(?amount) AS ?partitionAmount) WHERE  {
+      ?bubble a bgo:Account ; 
+                bgo:partitionLabel ?partitionLabel ;
+                dct:source/agcom:role/skos:prefLabel ?partitionLabel ;
+                bgo:amount ?amount .
+    } GROUP BY ?partitionLabel
+  }
+
+  BIND( IRI(CONCAT( STR(accounts:), "ruolo_", MD5(STR(?partitionLabel)))) AS ?partitionUri ) 
+}
+
+;
 
 #
 # Create partition schema for account:emittente
@@ -106,4 +127,6 @@ WHERE {
 
   BIND( IRI(CONCAT( STR(accounts:), "editore_", MD5(STR(?partitionLabel)))) AS ?partitionUri ) 
 }
+
+
 

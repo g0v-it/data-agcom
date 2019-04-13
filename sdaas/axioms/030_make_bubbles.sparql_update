@@ -24,7 +24,8 @@ INSERT {
 		bgo:version ?version ;
         bgo:background ?background ;
 		bgo:partitionLabel 
-			?labelProgramma, 
+			?subjectLabel,
+			?roleLabel, 
 			?labelEmittente,
 			?labelEditore
 } 
@@ -40,30 +41,36 @@ WHERE {
 	?observation a qb:Observation ;
 		qb:dataSet ?ds ;
 		agcom:subject ?subject ;
+		agcom:role ?role ;
+		agcom:context ?context ;
 		agcom:speakingTime ?amount 
 	.
 	
 
-  	# Il titolo della bolla è la prefLabel del soggetto della rilevazione.
-	?subject skos:prefLabel ?title .
+  	
+	?subject skos:prefLabel ?subjectLabel .
+	?role skos:prefLabel ?roleLabel .
+	
+	# Il titolo della bolla è la prefLabel del soggetto della rilevazione e il suo ruolo.
+	BIND( CONCAT(?subjectLabel," (",?roleLabel,")") AS ?title)
+	
+	
+	# Il subject  la prefLabel del contesto 
+	?context skos:prefLabel ?description  . 
 	
 	# Il background è l'immagine del politico che parla (se c'e')
 	OPTIONAL { ?subject foaf:img ?background } 
 	
-	# Il subject  la prefLabel del contesto 
-	?observation agcom:context/skos:prefLabel ?description  . 
 	
+	# Il soggetto individuale TV è la prima partizione
+	# Il ruolo è la seconda partizione
 	
-	# Il programma TV è la prima partizione
-	?observation agcom:context ?context.
-	?context skos:prefLabel ?labelProgramma.
-	
-	# L'emittente del programma è la seconda partizione
+	# L'emittente del programma è la terza partizione
 	?context skos:related ?emittente .
 	?emittente skos:inScheme resource:emittenti;
 		skos:prefLabel ?labelEmittente . 
 	
-	# L'editore  della missiome è la terza partizione
+	# L'editore  della missiome è la quarta partizione
 	?emittente skos:related ?editore .
 	?editore skos:inScheme resource:editori;
   		skos:prefLabel ?labelEditore.
