@@ -1,7 +1,7 @@
 APIs for g0v AGCOM visualizer
 ===========================================
 
-These APIs query an RDF graph database containing data according with [BubbleGraph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/v1/bgo) and produces
+These APIs query an RDF graph database containing data according with [BubbleGraph Ontology](http://linkeddata.center/lodmap-bgo/v1) and produces
 a json structure suitable to be used with a http://agcom.g0v.it/ application.
 
 ## usage
