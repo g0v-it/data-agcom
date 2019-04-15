@@ -23,13 +23,12 @@ resource:welcome a kees:KnowledgeBase;
 		"Dati estratti da documenti pubblicati da AGCOM e pesati con indici ricavati da dati AUDITEL."@it,
 		"La base della conoscenza è stata costruita utilizzando la piattaforma SDaaS™ di LinkedData.Center "@it ,
 		"La conoscenza è formalizzata attraverso Linked Data RDF e serve per alimentare l'applicazione https://agcom.g0v.it/. Per maggiori dettagli sulle ontologie e sugli strumenti utilizzati vedi https://github.com/g0v-it/data-agcom."@it ;
-	void:vocabulary <https://github.com/g0v-it/ontologies/tree/master/fr-ap>, <https://github.com/linkeddatacenter/kees>; 
+	void:vocabulary <https://g0v-it.github.io/ontologies/agcom>, <https://g0v-it.github.io/ontologies/auditel>; 
 	dct:publisher resource:Copernicani ;
 	dct:creator resource:SDaaS ;
 	dct:contributor resource:Copernicani, resource:AGCOM, resource:AUDITEL, resource:Wikidata ; 
  	void:exampleResource 
-		resource:spd_lbf_spe_elb_cap_01_2019 ,
-		resource:spd_lbf_spe_elb_cap_01_2019_schema ;
+		resource:resource:ds_2019_02 ;
 	void:uriSpace "http://agcom.linkeddata.cloud/resource/";
 	dct:subject <https://it.wikipedia.org/wiki/Pluralismo>;
 	foaf:page <https://agcom.g0v.it/>

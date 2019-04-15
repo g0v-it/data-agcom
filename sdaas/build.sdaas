@@ -14,14 +14,15 @@ SD_LEARN urn:sdaas:config "data/kees.ttl"
 SD_LEARN "${GRAPH}g0v_app_graph" "data/g0v_app.ttl"
 
 SD_LEARN "${GRAPH}agcom_resources_graph" "data/agcom_resources.ttl"
+SD_LEARN "${GRAPH}auditel_resources_graph" data/auditel_resources.ttl
 SD_LEARN "${GRAPH}2019_02_agcom_graph" data/2019_02_agcom.ttl
-SD_LEARN "${GRAPH}2018_auditel_graph" data/2018_auditel.ttl
 
 SD_LEARN http://g0v-it.github.io/ontologies/agcom https://g0v-it.github.io/ontologies/agcom/v1.ttl
 SD_LEARN http://g0v-it.github.io/ontologies/auditel https://g0v-it.github.io/ontologies/auditel/v1.ttl
 
 SD_LEARN http://reference.data.gov.uk/id/gregorian-year/2018
 SD_LEARN http://reference.data.gov.uk/id/gregorian-month/2019-02
+SD_LEARN http://reference.data.gov.uk/id/quarter/2019-Q1
 
 ####################################################
 SD_LOG  "Linking data... "
@@ -39,8 +40,8 @@ SD_SPARQL_UPDATE @axioms/010_skos-axioms.sparql_update
 SD_SPARQL_UPDATE @axioms/020_discover_links.sparql_update
 SD_SPARQL_UPDATE @axioms/022_find_missing_pref_labels.sparql_update
 SD_SPARQL_UPDATE @axioms/023_find_missing_person_img.sparql_update
-#SD_SPARQL_UPDATE @axioms/024_compute_nst.sparql_update
-#SD_SPARQL_UPDATE @axioms/025_compute_bwi.sparql_update
+SD_SPARQL_UPDATE @axioms/024_compute_nst.sparql_update
+SD_SPARQL_UPDATE @axioms/025_compute_bwi.sparql_update
 SD_SPARQL_UPDATE @axioms/030_make_bubbles.sparql_update
 #SD_SPARQL_UPDATE @axioms/035_make_bubbles_history.sparql_update
 #SD_SPARQL_UPDATE @axioms/036_make_bubbles_previous_value.sparql_update

@@ -1,0 +1,66 @@
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix sdmx-subject: <http://purl.org/linked-data/sdmx/2009/subject#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix auditel: <https://g0v-it.github.io/ontologies/auditel#> .
+@prefix resource: <http://agcom.linkeddata.cloud/resource/> . 
+
+
+resource:auditel_2018_by_emittente a qb:DataSet ;
+	dct:title "Estratto da rilevazioni agcom anno 2018 per emittente"@it ;
+	dct:source <http://www.auditel.it/media/filer_public/40/ad/40ad8125-d438-4dc9-af36-19c5320e436f/sintesi_annuale_2018.pdf> ;
+	dct:subject
+		sdmx-subject:3.3.3; 	 # Information society
+	auditel:refPeriod <http://reference.data.gov.uk/id/gregorian-year/2019> ;
+	dct:publisher  resource:AUDITEL 
+.
+resource:oauditel_e1 a qb:Observation ;
+    skos:inScheme resource:auditel_2018_by_emittente ;
+    auditel:audience 1522061 ;
+    auditel:context resource:Canale_5_emittente .
+
+resource:oauditel_e2 a qb:Observation ;
+    skos:inScheme resource:auditel_2018_by_emittente ;
+    auditel:audience 465032 ;
+    auditel:context resource:La7_emittente .
+
+resource:oauditel_e3 a qb:Observation ;
+    skos:inScheme resource:auditel_2018_by_emittente ;
+    auditel:audience 1832532 ;
+    auditel:context resource:Rai_1_emittente .
+
+resource:oauditel_e4 a qb:Observation ;
+    skos:inScheme resource:auditel_2018_by_emittente ;
+    auditel:audience 594744 ;
+    auditel:context resource:Rai_2_emittente .
+
+resource:oauditel_e5 a qb:Observation ;
+    skos:inScheme resource:auditel_2018_by_emittente ;
+    auditel:audience 624974 ;
+    auditel:context resource:Rai_3_emittente .
+
+resource:oauditel_e6 a qb:Observation ;
+    skos:inScheme resource:auditel_2018_by_emittente ;
+    auditel:audience 61079 ;
+    auditel:context resource:RaiNews24_emittente .
+
+resource:oauditel_e7 a qb:Observation ;
+    skos:inScheme resource:auditel_2018_by_emittente ;
+    auditel:audience 499495 ;
+    auditel:context resource:Rete_4_emittente .
+
+resource:oauditel_e8 a qb:Observation ;
+    skos:inScheme resource:auditel_2018_by_emittente ;
+    auditel:audience 27944 ;
+    auditel:context resource:SkyTg24_emittente .
+
+resource:oauditel_e9 a qb:Observation ;
+    skos:inScheme resource:auditel_2018_by_emittente ;
+    auditel:audience 798638 ;
+    auditel:context resource:Italia_1_emittente .
+
+resource:oauditel_e10 a qb:Observation ;
+    skos:inScheme resource:auditel_2018_by_emittente ;
+    auditel:audience 51740 ;
+    auditel:context resource:TgCom24_emittente .
+    

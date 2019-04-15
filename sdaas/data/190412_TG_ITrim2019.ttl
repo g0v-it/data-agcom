@@ -1,0 +1,51 @@
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix sdmx-subject: <http://purl.org/linked-data/sdmx/2009/subject#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix auditel: <https://g0v-it.github.io/ontologies/auditel#> .
+@prefix resource: <http://agcom.linkeddata.cloud/resource/> . 
+
+
+resource:auditel_2019_1Q_by_programma a qb:DataSet ;
+	dct:title "Elaborazione soggettiva da rilevazioni 1Q anno 2019 per programmi da pubblicazioni varie"@it ;
+	dct:source <urn:local:data:190412_TG_ITrim2019.xlsx> ;
+	dct:subject
+		sdmx-subject:3.3.3; 	 # Information society
+	auditel:refPeriod <http://reference.data.gov.uk/id/quarter/2019-Q1> ;
+	dct:publisher resource:Copernicani 
+.
+resource:oauditel_1 a qb:Observation ;
+    skos:inScheme resource:auditel_2019_1Q_by_programma ;
+    auditel:audience 3706590 ;
+    auditel:context resource:Tg5_programma .
+
+resource:oauditel_2 a qb:Observation ;
+    skos:inScheme resource:auditel_2019_1Q_by_programma ;
+    auditel:audience 976107 ;
+    auditel:context resource:La7_programma .
+
+resource:oauditel_3 a qb:Observation ;
+    skos:inScheme resource:auditel_2019_1Q_by_programma ;
+    auditel:audience 4581282 ;
+    auditel:context resource:Tg1_programma .
+
+resource:oauditel_4 a qb:Observation ;
+    skos:inScheme resource:auditel_2019_1Q_by_programma ;
+    auditel:audience 1967760 ;
+    auditel:context resource:Tg2_programma .
+
+resource:oauditel_5 a qb:Observation ;
+    skos:inScheme resource:auditel_2019_1Q_by_programma ;
+    auditel:audience 1943319 ;
+    auditel:context resource:Tg3_programma .
+
+resource:oauditel_6 a qb:Observation ;
+    skos:inScheme resource:auditel_2019_1Q_by_programma ;
+    auditel:audience 523284 ;
+    auditel:context resource:Tg4_programma .
+
+resource:oauditel_7 a qb:Observation ;
+    skos:inScheme resource:auditel_2019_1Q_by_programma ;
+    auditel:audience 1106231 ;
+    auditel:context resource:Studio_Aperto_programma .
+ 

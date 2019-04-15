@@ -75,11 +75,11 @@ Only main news programs (TG) are considered, all other programa are consolidated
 
 
 The broadcast weight index (bwi) is a subjective rank related to an estimated audience of TV programs 
-that is computed starting from the penetration data provided by AUDITEL according this a:
+that is computed starting from the potential audence data provided by AUDITEL according the formula:
 
-`bwi(program) = broadcast_network_audience(program) * program_relative_weight(program)`
+`bwi(observation) = COALESCE( avg_audience(observation.context), avg_audience(observation.context.nework))
 
-broadcast_network_audience is the potential audience of the whole TV channel respect italian population.
+audience is the potential audience of the whole TV channel respect italian population.
 
 program_relative_weight is an further index to weight the importance of a program in a tv chennel (default=1)
 

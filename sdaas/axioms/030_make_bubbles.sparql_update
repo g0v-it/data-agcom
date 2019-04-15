@@ -11,6 +11,7 @@ PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
 PREFIX scv: <http://purl.org/NET/scovo#>
 PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#>
 PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
+PREFIX local: <urn:local:agicom:>
 
 
 INSERT { 
@@ -33,6 +34,7 @@ WHERE {
 
 	?bgo a bgo:BubbleGraph ; dct:source ?ds .
   	?ds a qb:DataSet ;
+  		qb:structure agcom:rilevazioni_pluralismo ;
   		agcom:refPeriod ?refPeriod.
   	?refPeriod skos:prefLabel ?refPeriodLabel.
   	BIND( STRAFTER(?refPeriodLabel,"Gregorian ") AS ?version)
@@ -43,10 +45,12 @@ WHERE {
 		agcom:subject ?subject ;
 		agcom:role ?role ;
 		agcom:context ?context ;
-		agcom:speakingTime ?amount 
+		local:nst ?nst;
+		local:bwi ?bwi;
 	.
 	
-
+	# L'area della bolla è ?nst * ?bwi
+	BIND( ?nst * ?bwi AS ?amount)
   	
 	?subject skos:prefLabel ?subjectLabel .
 	?role skos:prefLabel ?roleLabel .
@@ -77,8 +81,8 @@ WHERE {
   		skos:prefLabel ?labelEditore.
   
   
-  BIND( MD5(STR(?observation)) AS ?code)	
-  BIND( IRI( CONCAT("https://data.agcom.g0v.it/ldp/account/",?code,"#data")) AS ?bubbleUri)
+	BIND( MD5(STR(?observation)) AS ?code)	
+	BIND( IRI( CONCAT("https://data.agcom.g0v.it/ldp/account/",?code,"#data")) AS ?bubbleUri)
 }
 
 ;
