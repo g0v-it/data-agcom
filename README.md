@@ -9,7 +9,9 @@ The knowledge base is compliant with RDF and Semantic Web Specification.
 
 Applications can access the knowledge graph through a SPARQL interface.
 
-**Reference implementations:**
+**Reference implementations: TBD**
+
+** N.B. not yet working **
 
 - **SPARQL endpoint**: https://data.agcom.g0v.it/sparql
 - **Linked Data browser**: http://data.agcom.g0v.it/welcome 
