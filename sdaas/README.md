@@ -58,7 +58,7 @@ Reference periods are published as linked data by [GOV.UK team](http://reference
 ## Data semantic and impressions
 
 Raw data are annotated according with [agcom vocabulary](https://g0v-it.github.io/ontologies/agcom) 
-and [auditel vocabulary](https://g0v-it.github.io/ontologies/auditel) and that extends 
+and [auditel vocabulary](https://g0v-it.github.io/ontologies/auditel)  that extend 
 the [RDF Data Cube Vocabulary](https://www.w3.org/TR/vocab-data-cube/) 
 
 Raw data are are translated to RDF turtle data stream through simple [PHP gateways](gateways) and
