@@ -138,7 +138,7 @@ docker build . -t sdaas
 docker run -d -p 8889:8080 --name datastore sdaas
 ```
 
-The resulting container will provide a read only distribution of the whole knowlede base in a stand-alone graph database with a SPARQL interface.
+The resulting container will provide a read only distribution of the whole knowlede base in a stand-alone read-only graph database with a SPARQL interface.
 
 
 ## Directory structure
