@@ -6,10 +6,11 @@ const DEFAULT_SCHEMA_ACCOUNTS = "bubbles",
 	DEFAULT_SCHEMA_ACCOUNT = "full",
 	DEFAULT_ACCEPT = "text/turtle";
 
-const partition1 = "p1_programma",
-partition2 = "p2_emittente",
-partition3 = "p3_editore",
-partition4 = "p4_ruolo" ;
+const 
+partition1 = "p1_soggetto",
+partition2 = "p2_ruolo",
+partition3 = "p3_emittente",
+partition4 = "p4_editore" ;
 
 //Modules
 //const http = require('http'),
@@ -51,18 +52,26 @@ exports.getFilter = async (req, res) => {
 	//Prepare filters
 	let filter1 = filters[partition1].join('|');
 	let filter2 = filters[partition2].join('|');
+	let filter3 = filters[partition3].join('|');
+	let filter4 = filters[partition4].join('|');
 
 	//prepare queries
-	let query1 = require('../queries/filter.js')(filter1, filter2, partition1);
-	let query2 = require('../queries/filter.js')(filter1, filter2, partition2);
+	let query1 = require('../queries/filter.js')(filter1, filter2, filter3, filter4, partition1);
+	let query2 = require('../queries/filter.js')(filter1, filter2, filter3, filter4, partition2);
+	let query3 = require('../queries/filter.js')(filter1, filter2, filter3, filter4, partition3);
+	let query4 = require('../queries/filter.js')(filter1, filter2, filter3, filter4, partition4);
 	//prepare data
 	let object1 = await buildJsonFilter(await getQueryResult(config.endpoint, query1, 'text/csv'), partition1);
 	let object2 = await buildJsonFilter(await getQueryResult(config.endpoint, query2, 'text/csv'), partition2);
+	let object3 = await buildJsonFilter(await getQueryResult(config.endpoint, query3, 'text/csv'), partition3);
+	let object4 = await buildJsonFilter(await getQueryResult(config.endpoint, query4, 'text/csv'), partition4);
 	//prepare result
 	let result = {};
 
 	result[partition1] = object1;
 	result[partition2] = object2;
+	result[partition3] = object3;
+	result[partition4] = object4;
 
 	res.json(result);
 }

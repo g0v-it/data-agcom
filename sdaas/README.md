@@ -57,8 +57,8 @@ Reference periods are published as linked data by [GOV.UK team](http://reference
 
 ## Data semantic
 
-Raw data are annotated according with [agcom vocabulary]() 
-and [auditel vocabulary]() and that extends 
+Raw data are annotated according with [agcom vocabulary](https://g0v-it.github.io/ontologies/agcom) 
+and [auditel vocabulary](https://g0v-it.github.io/ontologies/auditel) and that extends 
 the [RDF Data Cube Vocabulary](https://www.w3.org/TR/vocab-data-cube/) 
 
 Raw data are are translated to RDF turtle data stream through simple [PHP gateways](gateways) and
@@ -70,17 +70,26 @@ For each observation, a "normalized speak time" (nst) is calculated using the fo
 
 `nst := seconds_in(speakingTime)/days_in(refPeriod )` 
 
+The speakingTime is the time that an individual subject with a specific political role, uses in a TV channel.
+Only main news programs (TG) are considered, all other programa are consolidated in a general "extra tg" container for each broadcast channel.
+
+
 The broadcast weight index (bwi) is a subjective rank related to an estimated audience of TV programs 
-that is computed starting from the penetration data provided by AUDITEL according this formula:
+that is computed starting from the penetration data provided by AUDITEL according this a:
 
-`bwi(program) = auditel_ranking( broadcast_network(program) )`
+`bwi(program) = broadcast_network_audience(program) * program_relative_weight(program)`
 
+broadcast_network_audience is the potential audience of the whole TV channel respect italian population.
+
+program_relative_weight is an further index to weight the importance of a program in a tv chennel (default=1)
 
 Each AGCOM observation can be displayed as a bubble whose area is determined by following formula: 
 
 `bubble_area(agcom observation) = nst * bwi`
 
-Note that, because the broadcast weight index is subjective, a data display application should be able to allow users to change it. Pure AGICOM data can be displayed just putting bwi(program) = 1 for each program.
+Note that, because the broadcast weight index is subjective. Pure AGICOM data can be displayed just setting bwi(program) = 1 for each program.
+
+In details, [bwi is computed by a specific sparql axiom](axioms/025_compute_bwi.sparql_update)
 
 
 ## Updating the knowledge base

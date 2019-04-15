@@ -10,8 +10,8 @@
 
 <accounts#bubbleGraph> a bgo:BubbleGraph ;
 	dct:source resource:ds_2019_02;
-	dct:title "Visibilità della politica in TV"@it ;
-	dct:description "Analisi presenza di soggetti politici e istituzionali nei programmi TV. L'area di ogni bolla è proporzionale ai secondi di parola per programma e ruolo politico/istituzionale."@it ;
+	dct:title "Visibilità della politica in TV a Febbraio 2019"@it ;
+	dct:description "Presenza di soggetti politici e istituzionali nei programmi TV. L'area di ogni bolla è proporzionale alla potenziale visibilità degli interventi, considerando il programma e del ruolo politico/istituzionale."@it ;
 	bgo:um "Secondi";
     bgo:partitionScheme 
         <accounts#default> ,
