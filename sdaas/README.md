@@ -81,15 +81,23 @@ that is computed starting from the potential audence data provided by AUDITEL ac
 
 avg_audience is the potential audience of the whole TV channel.
 
-The multiplication of speaking Time for bwi produces a number that defines the daily **TV impressions** 
-of a subject with a political or institutional role. In other word a *TV impression*
-is defined as a second of a person with a political or institutional role exposed to a single televiewer
+There are some heuristics & guidelines that estimates that a speaker can pronunciate
+an average rate of 100 - 125 words per minute. That is 2 word per second. Because an average sentence is composed by
+10 words, we can introduce a metric called **TV impression**(TVI) computed by the multiplication of speaking Time for bwi divided by 5. That is `bwi(observation) * nst(observation) / 5`
+ 
+In other words, the  **daily TV impressions** (TVI/d) are just a rough estimation of the number of
+sentences pronounced by a subject with a political or institutional role in a TV program 
+that "hit" each single observer.
+
+For example: a 30-second speech in a TV program with an audience of 1000000 of people is 
+equivalent to 6000000 of TV impressions (i.e. 30*1000000/5 ).
 
 
 Each AGCOM observation can be displayed as a bubble whose area is proportional to the total of daily "TV impressions".
 
 The metrics [bwi](axioms/025_compute_bwi.sparql_update) and [nst](axioms/024_compute_nst.sparql_update)
-are computed by a specific sparql axioms. 
+are computed by a specific sparql axioms.
+The "daily TV impressions index" is computed in [make_bubbles axiom](axioms/030_make_bubbles.sparql_update) 
 
 
 

@@ -50,7 +50,7 @@ WHERE {
 	.
 	
 	# Calcolo impressions
-	BIND( (?nst * ?bwi  )  AS ?impressions)
+	BIND( (?nst * ?bwi / 5  )  AS ?impressions)
   	
 	?subject skos:prefLabel ?subjectLabel .
 	?role skos:prefLabel ?roleLabel .

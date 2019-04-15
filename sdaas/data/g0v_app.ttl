@@ -12,7 +12,7 @@
 	dct:source resource:ds_2019_02;
 	dct:title "Visibilità della politica in TV a Febbraio 2019"@it ;
 	dct:description "Presenza di soggetti politici e istituzionali nei programmi TV. L'area di ogni bolla è proporzionale al numero di impressioni, calcolate moltiplicando il numero medio di secondi giornalieri di esposizione per ruolo nel periodo di osservazione, per una stima del potenziale pubblico del programma analizzato."@it ;
-	bgo:um "viewability index";
+	bgo:um "TVI/d";
     bgo:partitionScheme 
         <accounts#default> ,
         <accounts#soggetto>,
