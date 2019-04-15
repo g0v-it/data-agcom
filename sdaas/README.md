@@ -79,7 +79,7 @@ that is computed starting from the potential audence data provided by AUDITEL ac
 
 `bwi(observation) = COALESCE( avg_audience(observation.context), avg_audience(observation.context.nework))
 
-avg_audience is the potential audience of the whole TV channel.
+audience is the potential audience of the specific tv program (e.g. Tg1) or whole TV channel (e.g. Rai 1).
 
 There are some heuristics & guidelines that estimates that a speaker can pronunciate
 an average rate of 100 - 125 words per minute. That is 2 word per second. Because an average sentence is composed by
