@@ -55,7 +55,7 @@ Tfhe [data/kees.ttl file](data/kees.ttl) contains meta data about knowledge base
 Reference periods are published as linked data by [GOV.UK team](http://reference.data.gov.uk/)
 
 
-## Data semantic
+## Data semantic and impressions
 
 Raw data are annotated according with [agcom vocabulary](https://g0v-it.github.io/ontologies/agcom) 
 and [auditel vocabulary](https://g0v-it.github.io/ontologies/auditel) and that extends 
@@ -71,7 +71,7 @@ For each observation, a "normalized speak time" (nst) is calculated using the fo
 `nst := seconds_in(speakingTime)/days_in(refPeriod )` 
 
 The speakingTime is the time that an individual subject with a specific political role, uses in a TV channel.
-Only main news programs (TG) are considered, all other programa are consolidated in a general "extra tg" container for each broadcast channel.
+Only main news programs (TG) are considered, all other programs are consolidated in a general "extra tg" container for each broadcast channel.
 
 
 The broadcast weight index (bwi) is a subjective rank related to an estimated audience of TV programs 
@@ -79,17 +79,15 @@ that is computed starting from the potential audence data provided by AUDITEL ac
 
 `bwi(observation) = COALESCE( avg_audience(observation.context), avg_audience(observation.context.nework))
 
-audience is the potential audience of the whole TV channel respect italian population.
+avg_audience is the potential audience of the whole TV channel.
 
-program_relative_weight is an further index to weight the importance of a program in a tv chennel (default=1)
+The multiplication of speaking Time for bwi produces a number that defines the **TV impressions** of a subject with a political or institutional role. In other word a *TV impression*
+is defined as a second of a person with a political or institutional role exposed to a single televiewer
 
-Each AGCOM observation can be displayed as a bubble whose area is determined by following formula: 
+Each AGCOM observation can be displayed as a bubble whose area is proportional to the total of TV impression in a day (i/g).
 
-`bubble_area(agcom observation) = nst * bwi`
-
-Note that, because the broadcast weight index is subjective. Pure AGICOM data can be displayed just setting bwi(program) = 1 for each program.
-
-In details, [bwi is computed by a specific sparql axiom](axioms/025_compute_bwi.sparql_update)
+The metrics [bwi](axioms/025_compute_bwi.sparql_update) and [nst](axioms/024_compute_nst.sparql_update)
+are computed by a specific sparql axioms.
 
 
 ## Updating the knowledge base
