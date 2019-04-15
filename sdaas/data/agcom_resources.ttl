@@ -102,7 +102,7 @@ resource:Rai_1-extra_tg_programma skos:related resource:Rai_1_emittente .
 resource:Rai_2-extra_tg_programma skos:related resource:Rai_2_emittente .
 resource:Rai_3-extra_tg_programma skos:related resource:Rai_3_emittente .
 resource:Rai_News_programma skos:related resource:RaiNews24_emittente .
-resource:Rai_News-extra_tg_programma skos:related resource:Rainews24_emittente .
+resource:Rai_News-extra_tg_programma skos:related resource:RaiNews24_emittente .
 resource:Rete_4-extra_tg_programma skos:related resource:Rete_4_emittente .
 resource:Sky_Tg24_programma skos:related resource:SkyTg24_emittente .
 resource:Sky_Tg24-extra_tg_programma skos:related resource:SkyTg24_emittente .

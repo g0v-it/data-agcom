@@ -23,4 +23,6 @@ WHERE {
 	OPTIONAL { ?y auditel:context ?emittente  ;auditel:audience ?audience_emittente }
 
 	BIND( COALESCE(?audience_programma, ?audience_emittente) as ?bwi )
+	
+	FILTER NOT EXISTS  { ?observation local:bwi [] }
 }

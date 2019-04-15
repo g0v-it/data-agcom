@@ -15,4 +15,7 @@ WHERE {
 	?refPeriod scv:max ?max_day; scv:min ?min_day .
 	BIND( ?max_day - ?min_day + 1 AS ?days )
 	BIND( ?speackingTime/?days as ?nst )
+	
+	
+	FILTER NOT EXISTS  { ?observation local:nst [] }
 }
