@@ -13,7 +13,7 @@ PREFIX interval: <http://reference.data.gov.uk/def/intervals/>
 PREFIX sdmx-subject: <http://purl.org/linked-data/sdmx/2009/subject#> 
 PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#> 
 PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
-
+PREFIX local: <urn:local:agicom:>
 
 ASK WHERE {
 
@@ -24,7 +24,11 @@ ASK WHERE {
           agcom:subject ?subject ;
           agcom:role ?role ;
           agcom:context ?context ;
-          agcom:speakingTime ?speakingTime
+          agcom:speakingTime ?speakingTime ;
+          local:nst ?nst ;
+          local:bwi ?bwi .
+      FILTER( isNumeric(?nst) && ?nst > 0) 
+      FILTER( isNumeric(?bwi) && ?bwi > 0) 
       FILTER( isNumeric(?speakingTime) && ?speakingTime > 0) 
 	  ?dataset qb:structure agcom:rilevazioni_pluralismo .
 	  ?subject a foaf:Person,skos:Concept ;

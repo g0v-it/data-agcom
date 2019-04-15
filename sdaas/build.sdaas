@@ -15,6 +15,7 @@ SD_LEARN "${GRAPH}g0v_app_graph" "data/g0v_app.ttl"
 
 SD_LEARN "${GRAPH}agcom_resources_graph" "data/agcom_resources.ttl"
 SD_LEARN "${GRAPH}auditel_resources_graph" data/auditel_resources.ttl
+SD_LEARN "${GRAPH}190412_TG_ITrim2019_graph" data/190412_TG_ITrim2019.ttl
 SD_LEARN "${GRAPH}2019_02_agcom_graph" data/2019_02_agcom.ttl
 
 SD_LEARN http://g0v-it.github.io/ontologies/agcom https://g0v-it.github.io/ontologies/agcom/v1.ttl

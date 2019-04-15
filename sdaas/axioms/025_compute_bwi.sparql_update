@@ -6,7 +6,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX scv: <http://purl.org/NET/scovo#>
 PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#>
-PREFIX auditel: <https://g0v-it.github.io/ontologies/agcom#>
+PREFIX auditel: <https://g0v-it.github.io/ontologies/auditel#>
 PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
 PREFIX local: <urn:local:agicom:>
 
@@ -17,10 +17,10 @@ WHERE {
 		agcom:speakingTime ?speakingTime.
 		
 	?programma skos:related ?emittente.
-	OPTIONAL { ?programma auditel:audience ?audience_programma }
+	OPTIONAL { ?x auditel:context ?programma ;auditel:audience ?audience_programma }
 	
 	?emittente skos:inScheme resource:emittenti.
-	OPTIONAL { ?emittente auditel:audience ?audience_emittente }
+	OPTIONAL { ?y auditel:context ?emittente  ;auditel:audience ?audience_emittente }
 
 	BIND( COALESCE(?audience_programma, ?audience_emittente) as ?bwi )
 }
