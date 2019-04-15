@@ -66,7 +66,7 @@ the resulting triples are stored in a RDF graph database.
 
 ##  Data visualization axioms
 
-For each observation, a "normalized speak time" (nst) is calculated using the formula:
+For each observation, a "normalized speaking time" (nst) is calculated using the formula:
 
 `nst := seconds_in(speakingTime)/days_in(refPeriod )` 
 
@@ -81,13 +81,16 @@ that is computed starting from the potential audence data provided by AUDITEL ac
 
 avg_audience is the potential audience of the whole TV channel.
 
-The multiplication of speaking Time for bwi produces a number that defines the **TV impressions** of a subject with a political or institutional role. In other word a *TV impression*
+The multiplication of speaking Time for bwi produces a number that defines the daily **TV impressions** 
+of a subject with a political or institutional role. In other word a *TV impression*
 is defined as a second of a person with a political or institutional role exposed to a single televiewer
 
-Each AGCOM observation can be displayed as a bubble whose area is proportional to the total of TV impression in a day (i/g).
+
+Each AGCOM observation can be displayed as a bubble whose area is proportional to the total of daily "TV impressions".
 
 The metrics [bwi](axioms/025_compute_bwi.sparql_update) and [nst](axioms/024_compute_nst.sparql_update)
-are computed by a specific sparql axioms.
+are computed by a specific sparql axioms. 
+
 
 
 ## Updating the knowledge base

@@ -21,7 +21,7 @@ INSERT {
 		dct:title ?title ;
 		dct:subject ?description ;
 		dct:source ?observation ;
-		bgo:amount ?amount ;
+		bgo:amount ?impressions ;
 		bgo:version ?version ;
         bgo:background ?background ;
 		bgo:partitionLabel 
@@ -49,8 +49,8 @@ WHERE {
 		local:bwi ?bwi;
 	.
 	
-	# L'area della bolla è ?nst * ?bwi
-	BIND( ?nst * ?bwi AS ?amount)
+	# Calcolo impressions
+	BIND( (?nst * ?bwi  )  AS ?impressions)
   	
 	?subject skos:prefLabel ?subjectLabel .
 	?role skos:prefLabel ?roleLabel .
