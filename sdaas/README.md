@@ -26,7 +26,7 @@ See [this page as example](https://www.agcom.it/documentazione/documento?p_p_aut
 
 Waiting for open data publishing, the data are manually extracted form the AGCOM PDF reports and stored in the  [data directory](data)
 
-### AUDITEL open data
+### AUDITEL public data
 
 AUDITEL is a private consortium that collects data about italian TV shows audience. It publishes some
 aggregated data in its [web site](http://www.auditel.it/dati/) as a pdf table.
