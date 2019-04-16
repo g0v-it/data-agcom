@@ -33,6 +33,8 @@ SD_SPARQL_UPDATE @linked_data/import_parties_from_wikidata.sparql_update
 SD_SPARQL_UPDATE @linked_data/import_politicians_from_wikidata.sparql_update
 SD_SPARQL_UPDATE @linked_data/import_tv_channels_from_wikidata.sparql_update
 
+SD_SPARQL_UPDATE @linked_data/import_deputati.sparql_update
+SD_SPARQL_UPDATE @linked_data/import_senatori.sparql_update
 ####################################################
 SD_LOG  "Starting reasoning window... "
 ####################################################

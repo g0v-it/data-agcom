@@ -1,0 +1,22 @@
+#
+# Import frow CAMERA DEI DEPUTATI XVIII legislatura
+#
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX ocd: <http://dati.camera.it/ocd/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+INSERT {
+  	?d a foaf:person, ocd:deputato ;
+  	skos:hiddenLabel ?hiddenLabel1,?hiddenLabel2 ; 
+  	foaf:img ?immagine
+} WHERE {
+  SERVICE <http://dati.camera.it/sparql> {
+	?d a ocd:deputato;
+	foaf:surname ?cognome; foaf:firstName ?nome;
+	ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_18>.
+	OPTIONAL{ ?d foaf:depiction ?immagine}
+  }
+  BIND ( STRLANG(CONCAT(?cognome, " ", ?nome), "it") AS ?hiddenLabel1)
+  BIND ( STRLANG(CONCAT(?nome, " ", ?cognome), "it") AS ?hiddenLabel2)
+} 

@@ -1,16 +1,17 @@
 #
-# Discover new wikidata links for agcom concepts
+# Discover new links for agcom concepts
+#
 PREFIX owl: <http://www.w3.org/2002/07/owl#> 
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
 
-INSERT { ?concept owl:sameAs ?wikiItem }
+INSERT { ?concept owl:sameAs ?sameAs }
 WHERE {  
 	?concept skos:prefLabel|skos:hiddenLabel ?label .
-  	FILTER STRSTARTS(str(?concept), "http://agcom.linkeddata.cloud/resource/")
+  	FILTER STRSTARTS(str(?concept), str(resource:))
   	
-  	?wikiItem skos:prefLabel|skos:hiddenLabel ?label .
-  	FILTER STRSTARTS(str(?wikiItem), "http://www.wikidata.org/entity/")
+  	?sameAs skos:prefLabel|skos:hiddenLabel ?label .
 
-	FILTER (?concept != ?wikiItem )
-    FILTER NOT EXISTS { ?concept owl:sameAs ?wikiItem }
+	FILTER (?concept != ?sameAs )
+    FILTER NOT EXISTS { ?concept owl:sameAs ?sameAs }
 }

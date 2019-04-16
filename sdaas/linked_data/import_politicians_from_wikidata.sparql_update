@@ -6,11 +6,14 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/> 
 
 
 # Import frow wikidata all politicians, creating hidden labes to index
 INSERT {
-  	?politician skos:prefLabel ?label;
+  	?politician a foaf:person; 
+  		foaf:img ?imgThumb;
+  		skos:prefLabel ?label;
   		skos:hiddenLabel ?altLabel1, ?altLabel2, ?altLabel3 ;
   		owl:sameAs ?openPolisUri
 } WHERE {
@@ -19,6 +22,16 @@ INSERT {
           wdt:P27 wd:Q38;			# italian
           wdt:P1229 ?openpolisId ;	# registered in openpolis
           rdfs:label ?label.
+    OPTIONAL {
+    	# see https://stackoverflow.com/questions/34393884/how-to-get-image-url-property-from-wikidata-item-by-api
+    	?politician wdt:P18 ?img.
+	 	BIND( STR(?img) AS ?urlString)
+	    BIND( REPLACE(STRAFTER( ?urlString, "Special:FilePath/"),"%20","_") AS ?filename)
+	    BIND( MD5(?filename) AS ?hash)
+	    BIND( SUBSTR(?hash, 1, 1) AS ?firstDir)
+	    BIND( SUBSTR(?hash, 1, 2) AS ?secondDir)
+	    BIND( IRI( CONCAT( "https://upload.wikimedia.org/wikipedia/commons/thumb/",?firstDir,"/",?secondDir,"/",?filename,"/255px-", ?filename)) AS ?imgThumb)
+    }
     FILTER(LANG(?label) = "it")
     FILTER NOT EXISTS { ?politician wdt:P570 []} # is not dead
   }

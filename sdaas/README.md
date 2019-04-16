@@ -11,6 +11,7 @@ Following data sources are considered:
 
 - AGCOM open data 
 - AUDITEL public data
+- open data from Camera dei deputati and SENATO
 - Wikidata
 - LODMAP configuration data
 - KEES configuration data
@@ -34,6 +35,11 @@ aggregated data in its [web site](http://www.auditel.it/dati/) as a pdf table.
 This project uses the  [2018 Sintesi Annuale 2018 file](http://www.auditel.it/media/filer_public/40/ad/40ad8125-d438-4dc9-af36-19c5320e436f/sintesi_annuale_2018.pdf)
 to estimate the audience of the broadcaster networks refereed in AGCOM data. The data are manually extracted 
 form the AUDITEL site and stored in the  [data/2018_auditel.ttl file](data/2018_auditel.ttl)
+
+### open data from Camera dei deputati and SENATO
+
+The name and picture of all Italian parliament members in the XVIII legislatura are extracted from
+official SPARQL end points
 
 ### Wikidata 
 
@@ -89,7 +95,7 @@ an average rate of 100 - 125 words per minute. That is 2 words per second. Becau
 In other words, the  **TV impressions** (TVi) are just a rough estimation of the daily number of
 sentences delivered to all TV watchers.
 
-For example: a 30-second speech in a TV program with an audience of 1000000 of people is 
+For example: a 30-second speech in a TV program in a day with an audience of 1000000 of people is 
 equivalent to 6000000 of TV impressions (i.e. 30*1000000/5 ).
 
 

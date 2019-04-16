@@ -1,0 +1,24 @@
+#
+# Import frow SENATO XVIII (tutte le legislature)
+#
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX osr: <http://dati.senato.it/osr/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+INSERT {
+  	?senatore a foaf:person, osr:Senatore ;
+  	skos:prefLabel ?label;
+  	skos:hiddenLabel ?hiddenLabel1,?hiddenLabel2 ; 
+  	foaf:img ?img
+} WHERE {
+  SERVICE <http://dati.senato.it/sparql> {
+	?senatore a osr:Senatore ;
+    	foaf:firstName ?nome ; 
+    	foaf:lastName ?cognome .
+    OPTIONAL { ?senatore foaf:depiction ?image}
+  }
+  BIND( STRLANG(CONCAT(?nome, " ", ?cognome), "it") AS ?prefLabel)
+  BIND ( STRLANG(UCASE(CONCAT(?cognome, " ", ?nome)), "it") AS ?hiddenLabel1)
+  BIND ( STRLANG(UCASE(?prefLabel), "it") AS ?hiddenLabel2)
+} 
