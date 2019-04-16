@@ -41,9 +41,9 @@ CONSTRUCT {
 		dct:source ?fact ;
 		bgo:amount ?amount ;	
 		bgo:version ?version;
-		bgo:background ?background ;
 		bgo:partitionLabel ?partitionLabel.
   	
+  	OPTIONAL { ?bubbleUri bgo:background ?background }
   	OPTIONAL { ?bubbleUri bgo:previousValue ?previousValue }
   	OPTIONAL { 
       ?bubbleUri bgo:isVersionOf ?historyRec .
