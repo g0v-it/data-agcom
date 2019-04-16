@@ -20,11 +20,11 @@ Following data sources are considered:
 ### AGCOM raw data
 
 AGCOM collects periodic records about the presence of politicians in main TV shows.
-
 Source raw datasets are published in the [AGCOM web site](https://www.agcom.it/).
 See [this page as example](https://www.agcom.it/documentazione/documento?p_p_auth=fLw7zRht&p_p_id=101_INSTANCE_ls3TZlzsK0hm&p_p_lifecycle=0&p_p_col_id=column-1&p_p_col_count=1&_101_INSTANCE_ls3TZlzsK0hm_struts_action=%2Fasset_publisher%2Fview_content&_101_INSTANCE_ls3TZlzsK0hm_assetEntryId=14262570&_101_INSTANCE_ls3TZlzsK0hm_type=document)
 
-Waiting for open data publishing, the data are manually extracted form the AGCOM PDF reports and stored in the  [data directory](data)
+Waiting for open data publishing, the data are manually extracted form the AGCOM PDF reports 
+and stored in the  [data directory](data)
 
 ### AUDITEL public data
 
@@ -37,7 +37,7 @@ form the AUDITEL site and stored in the  [data/2018_auditel.ttl file](data/2018_
 
 ### Wikidata 
 
-Picture and descriptions about polictical individuals, TV shows, networks and editors are extracted from the wikidata SPARQL endpoint.
+Provides pictures and descriptions about persons, TV shows, networks and editors.
 
 ### LODMAP data visualization configuration
 
@@ -48,7 +48,7 @@ Configuration data are contained in [data/agcom-strings.json file](data/agcom-st
 
 ### KEES configuration data
 
-Tfhe [data/kees.ttl file](data/kees.ttl) contains meta data about knowledge base according [KEES](http://linkeddata.center/kees) specifications. 
+The [data/kees.ttl file](data/kees.ttl) contains meta data about knowledge base according [KEES](http://linkeddata.center/kees) specifications. 
 
 ### Reference periods
 
@@ -107,7 +107,7 @@ knowledge base build process requires to:
 - develop the *gateways* for transforming web resources in linked data. See [gateways doc.](gateways/README.md)
 - write *axioms* and rules to generate new data. See [axioms doc.](axioms/README.md)
 - edit the *build script* that drives the data ingestion process.
-- run sdaas
+- run sdaas agent
 
 ### debugging the build script with docker
 
@@ -117,6 +117,7 @@ the test of the build script require at least 2GB of ram available to the docker
 docker run -d -p 9999:8080 -v $PWD/.:/workspace --name kb linkeddatacenter/sdaas-ce
 docker exec -ti kb bash
 apk --no-cache add php7
+# run build process
 sdaas --debug -f build.sdaas --reboot
 # Access the workbench pointing browser to http://localhost:9999/sdaas
 exit
