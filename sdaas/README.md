@@ -86,9 +86,8 @@ There are some heuristics & guidelines that estimates that a speaker can pronunc
 an average rate of 100 - 125 words per minute. That is 2 words per second. Because an average sentence is composed by
 10 words, we introduce a metric called **TV impressions**(TVI) computed by dividing by 5 the daily listening time. That is `bwi(observation) * nst(observation) / 5`
  
-In other words, the  **TV impressions** (TVi) are just a rough estimation of the number of
-sentences pronounced by a subject with a political or institutional role in a TV program 
-that "hit" TV watchers daily.
+In other words, the  **TV impressions** (TVi) are just a rough estimation of the daily number of
+sentences delivered to all TV watchers.
 
 For example: a 30-second speech in a TV program with an audience of 1000000 of people is 
 equivalent to 6000000 of TV impressions (i.e. 30*1000000/5 ).
