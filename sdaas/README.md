@@ -55,7 +55,7 @@ Tfhe [data/kees.ttl file](data/kees.ttl) contains meta data about knowledge base
 Reference periods are published as linked data by [GOV.UK team](http://reference.data.gov.uk/)
 
 
-## Data semantic and impressions
+## Data semantic
 
 Raw data are annotated according with [agcom vocabulary](https://g0v-it.github.io/ontologies/agcom) 
 and [auditel vocabulary](https://g0v-it.github.io/ontologies/auditel)  that extend 
@@ -66,38 +66,37 @@ the resulting triples are stored in a RDF graph database.
 
 ##  Data visualization axioms
 
-For each observation, a "normalized speaking time" (nst) is calculated using the formula:
+For each observation, a **normalized speaking time** (nst) is calculated using the formula:
 
 `nst := seconds_in(speakingTime)/days_in(refPeriod )` 
 
-The speakingTime is the time that an individual subject with a specific political role, uses in a TV channel.
-Only main news programs (TG) are considered, all other programs are consolidated in a general "extra tg" container for each broadcast channel.
-
+The **speaking time** is the time that an individual subject with a specific role, uses in a TV channel.
+Only main news programs (TG) are considered, all other programs are consolidated in a general "extra tg" container for each broadcast channel. The speaking time is provided by AGCOM
 
 The broadcast weight index (bwi) is a subjective rank related to an estimated audience of TV programs 
-that is computed starting from the potential audence data provided by AUDITEL according the formula:
+that is computed starting from the potential audience data provided by AUDITEL according with the formula:
 
-`bwi(observation) = COALESCE( avg_audience(observation.context), avg_audience(observation.context.nework))
+`bwi(observation) = COALESCE( avg_audience(observation.context), avg_audience(observation.context.nework))`
 
-audience is the potential audience of the specific tv program (e.g. Tg1) or whole TV channel (e.g. Rai 1).
+that consider the  potential audience of a specific tv program (e.g. Tg1) or of the whole TV channel (e.g. Rai 1).
+
+The **daily listening time** (dlt) is defined as `bwi(observation) * bwi(observation))`
 
 There are some heuristics & guidelines that estimates that a speaker can pronunciate
-an average rate of 100 - 125 words per minute. That is 2 word per second. Because an average sentence is composed by
-10 words, we can introduce a metric called **TV impression**(TVI) computed by the multiplication of speaking Time for bwi divided by 5. That is `bwi(observation) * nst(observation) / 5`
+an average rate of 100 - 125 words per minute. That is 2 words per second. Because an average sentence is composed by
+10 words, we introduce a metric called **TV impressions**(TVI) computed by dividing by 5 the daily listening time. That is `bwi(observation) * nst(observation) / 5`
  
-In other words, the  **daily TV impressions** (TVI/d) are just a rough estimation of the number of
+In other words, the  **TV impressions** (TVi) are just a rough estimation of the number of
 sentences pronounced by a subject with a political or institutional role in a TV program 
-that "hit" each single observer.
+that "hit" TV watchers daily.
 
 For example: a 30-second speech in a TV program with an audience of 1000000 of people is 
 equivalent to 6000000 of TV impressions (i.e. 30*1000000/5 ).
 
 
-Each AGCOM observation can be displayed as a bubble whose area is proportional to the total of daily "TV impressions".
-
 The metrics [bwi](axioms/025_compute_bwi.sparql_update) and [nst](axioms/024_compute_nst.sparql_update)
 are computed by a specific sparql axioms.
-The "daily TV impressions index" is computed in [make_bubbles axiom](axioms/030_make_bubbles.sparql_update) 
+The "daily TV impressions" is computed in [make_bubbles axiom](axioms/030_make_bubbles.sparql_update) 
 
 
 
