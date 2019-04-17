@@ -8,12 +8,50 @@ PREFIX interval: <http://reference.data.gov.uk/def/intervals/>
 PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
-PREFIX scv: <http://purl.org/NET/scovo#>
 PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#>
 PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
+PREFIX scovo: <http://purl.org/NET/scovo#>
 PREFIX local: <urn:local:agicom:>
 
 
+#
+# AXIOM: find the last dataset and use it to create bubble graph (i.e. Accounts)
+#
+INSERT { ?bgo dct:source ?ds }
+WHERE {
+	{
+		SELECT ?ds ?refPeriod {
+			?ds a qb:DataSet ;
+  				qb:structure agcom:rilevazioni_pluralismo ;
+  				agcom:refPeriod ?refPeriod .
+			?refPeriod time:hasEnd/time:inXSDDateTime ?endDate.
+		} ORDER BY DESC(?endDate) LIMIT 1
+	}
+	
+	?bgo a bgo:BubbleGraph .
+
+	FILTER NOT EXISTS {?bgo dct:source [] }
+}
+
+;
+
+#
+# AXIOM generate the default bubble graph title
+# 
+INSERT { ?bgo dct:title ?title }
+WHERE {
+	?bgo a bgo:BubbleGraph; dct:source/agcom:refPeriod ?refPeriod .
+	?refPeriod scovo:max ?to ; scovo:min ?from .
+	
+	BIND( STRLANG(CONCAT("Visibilità della politica in TV dal ", STR(?from), " al ", STR(?to)), "it") AS ?title )  
+	FILTER NOT EXISTS {?bgo ?title [] }
+}
+
+;
+
+#
+# AXIOM: add acc
+#
 INSERT { 
    ?bubbleUri a bgo:Account ;
 		bgo:inBubbleGraph ?bgo ;
@@ -35,10 +73,10 @@ WHERE {
 	?bgo a bgo:BubbleGraph ; dct:source ?ds .
   	?ds a qb:DataSet ;
   		qb:structure agcom:rilevazioni_pluralismo ;
-  		agcom:refPeriod ?refPeriod.
-  	?refPeriod skos:prefLabel ?refPeriodLabel.
-  	BIND( STRAFTER(?refPeriodLabel,"Gregorian ") AS ?version)
-  	
+  		agcom:refPeriod/time:hasEnd/time:inXSDDateTime ?endDate.
+  
+  	BIND( STRBEFORE(STR(?endDate),"T") AS ?version)
+   	
 
 	?observation a qb:Observation ;
 		qb:dataSet ?ds ;
@@ -59,7 +97,6 @@ WHERE {
 	# Il titolo della bolla è la prefLabel del soggetto della rilevazione e il suo ruolo.
 	BIND( CONCAT(?subjectLabel," (",?roleLabel,")") AS ?title)
 	
-	
 	# Il subject  la prefLabel del contesto 
 	BIND( CONCAT(?contextLabel, " - ", ?version) AS ?description)
 	
@@ -68,8 +105,7 @@ WHERE {
 	
 	
 	# Il soggetto individuale TV è la prima partizione
-	# Il ruolo è la seconda partizione
-	
+	# Il ruolo è la seconda partizione	
 	# L'emittente del programma è la terza partizione
 	?context skos:related ?emittente .
 	?emittente skos:inScheme resource:emittenti;

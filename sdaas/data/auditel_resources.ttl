@@ -10,7 +10,8 @@ resource:auditel_2018_by_emittente a qb:DataSet ;
 	dct:title "Estratto da rilevazioni agcom anno 2018 per emittente"@it ;
 	dct:source <http://www.auditel.it/media/filer_public/40/ad/40ad8125-d438-4dc9-af36-19c5320e436f/sintesi_annuale_2018.pdf> ;
 	dct:subject
-		sdmx-subject:3.3.3; 	 # Information society
+        sdmx-subject:1.11 ,      # Time use
+        sdmx-subject:2.1 ; 	 # Macroeconomic statistics
 	auditel:refPeriod <http://reference.data.gov.uk/id/gregorian-year/2019> ;
 	dct:publisher  resource:AUDITEL 
 .

@@ -4,7 +4,6 @@
 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
 PREFIX qb: <http://purl.org/linked-data/cube#>
-PREFIX scv: <http://purl.org/NET/scovo#>
 PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#>
 PREFIX auditel: <https://g0v-it.github.io/ontologies/auditel#>
 PREFIX resource: <http://agcom.linkeddata.cloud/resource/>

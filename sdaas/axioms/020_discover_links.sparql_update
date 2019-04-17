@@ -1,5 +1,7 @@
 #
 # Discover new links for agcom concepts
+# WARNING: skos:prefLabel and skos:hiddenLabel are used like inverse functional properties
+#   this can not be considered a general rule
 #
 PREFIX owl: <http://www.w3.org/2002/07/owl#> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>

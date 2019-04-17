@@ -10,7 +10,8 @@ resource:auditel_2019_1Q_by_programma a qb:DataSet ;
 	dct:title "Elaborazione soggettiva da rilevazioni 1Q anno 2019 per programmi da pubblicazioni varie"@it ;
 	dct:source <urn:local:data:190412_TG_ITrim2019.xlsx> ;
 	dct:subject
-		sdmx-subject:3.3.3; 	 # Information society
+        sdmx-subject:1.11 ,      # Time use
+        sdmx-subject:2.1 ; 	 # Macroeconomic statistics
 	auditel:refPeriod <http://reference.data.gov.uk/id/quarter/2019-Q1> ;
 	dct:publisher resource:Copernicani 
 .

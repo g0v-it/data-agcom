@@ -1,21 +1,22 @@
 #
 # normalized speak time" (nst) is calculated using the formula: `nst := seconds_in(speakingTime)/days_in(refPeriod )`
+# WARNING: assumes that xsd:dateTime arithmetic supported ( ?a - ?b = interval in nuber of days (float)
 #
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
 PREFIX qb: <http://purl.org/linked-data/cube#>
-PREFIX scv: <http://purl.org/NET/scovo#>
+PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#>
 PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
 PREFIX local: <urn:local:agicom:>
 
 INSERT { ?observation local:nst ?nst} 
 WHERE {
-	?observation qb:dataSet ?dataset ; agcom:speakingTime ?speackingTime.
+	?observation qb:dataSet ?dataset ; agcom:speakingTime ?speakingTime.
 	?dataset qb:structure agcom:rilevazioni_pluralismo; agcom:refPeriod ?refPeriod .
-	?refPeriod scv:max ?max_day; scv:min ?min_day .
-	BIND( ?max_day - ?min_day + 1 AS ?days )
-	BIND( ?speackingTime/?days as ?nst )
-	
+	?refPeriod time:hasBeginning/time:inXSDDateTime ?startDate ;
+		 time:hasEnd/time:inXSDDateTime ?endDate ;
+	BIND( ?endDate - ?startDate AS ?days )
+	BIND( ?speakingTime/?days as ?nst )
 	
 	FILTER NOT EXISTS  { ?observation local:nst [] }
 }
