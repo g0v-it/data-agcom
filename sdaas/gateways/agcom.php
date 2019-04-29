@@ -54,8 +54,27 @@ resource:$id a qb:DataSet ;
 
 
 
+function normalizeLabel($label) {
+    $label = preg_replace('/[[:^print:]]/', '', $label );
+    $label = preg_replace('/\s+/', '_', $label);
+    $label = preg_replace('/_/', ' ', $label);
+    $label = trim($label);
+    $label = ucwords($label);
+    
+    // special cases
+    if( $label=='Governo/ Ministri/ Sottosegretari') {
+        $label='Governo';
+    } elseif($label=='Movimento 5 Stelle') {
+        $label='M5S';
+    } elseif($label=='PD') {
+        $label='Partito Democratico';
+    }
+    
+    return $label ;
+}
+
 /**
- * This functopn translate the name of a AGCOM subject into token id
+ * This function translates the name of a AGCOM subject into token id
  * that is expected to be defined in the agcom:soggetti taxonomy
  */
 function strToAgcomId($str) {
@@ -69,6 +88,7 @@ function strToAgcomId($str) {
     $str = str_replace('Governo/_Ministri/_Sottosegretari', 'Governo', $str);
     $str = str_replace('Fratelli_d_Italia', 'Fratelli_dItalia', $str);
     $str = str_replace('Partito_Democratico', 'PD', $str);
+    $str = str_replace('Movimento_5_Stelle', 'M5S', $str);
     $str = str_replace('Lega_Nord', 'Lega', $str);
     return $str;
 }
@@ -132,6 +152,13 @@ function getContext($pageText) {
 }
 
 
+
+
+
+
+
+
+
 // Parse pdf file and build necessary objects.
 $parser = new \Smalot\PdfParser\Parser();
 $pdf    = $parser->parseFile($inputFile);
@@ -157,11 +184,11 @@ foreach ($pages as $page) {
                 
                 // generate subject id and save its label
                 $subject = strToAgcomId($matches[1]);
-                $labels[$subject] = preg_replace('/[[:^print:]]/', '', $matches[1]); 
+                $labels[$subject] = normalizeLabel($matches[1]); 
                 
                 // generate role id and save its label
                 $role = strToAgcomId($matches[2]);
-                $labels[$role] = preg_replace('/[[:^print:]]/', '', $matches[2]);
+                $labels[$role] = normalizeLabel($matches[2]);
                 
                 // generate speaking time in seconds
                 $speakingTime = seconds($matches[3]);
