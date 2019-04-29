@@ -50,10 +50,8 @@ WHERE {
 		agcom:context ?context ;
 		local:nst ?nst;
 		local:bwi ?bwi;
+		local:tvi ?impressions;
 	.
-	
-	# Calcolo impressions
-	BIND( (?nst * ?bwi / 5  )  AS ?impressions)
   	
 	?subject skos:prefLabel ?subjectLabel .
 	?role skos:prefLabel ?roleLabel .

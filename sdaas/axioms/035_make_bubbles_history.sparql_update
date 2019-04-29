@@ -33,7 +33,7 @@ INSERT {
     	agcom:subject ?subject ;
     	agcom:role ?role ;
     	agcom:context ?context ;          
-        local:nst ?amount . 
+        local:tvi ?amount . 
 
 	BIND( STRBEFORE(STR(?endDate),"T") AS ?version)         
     FILTER( ?endDate < ?referenceDate )

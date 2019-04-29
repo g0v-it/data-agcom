@@ -27,10 +27,12 @@ ASK WHERE {
           agcom:role ?role ;
           agcom:context ?context ;
           agcom:speakingTime ?speakingTime ;
+          local:tvi ?tvi ;
           local:nst ?nst ;
           local:bwi ?bwi .
       FILTER( isNumeric(?nst) && ?nst > 0) 
       FILTER( isNumeric(?bwi) && ?bwi > 0) 
+      FILTER( isNumeric(?tvi) && ?tvi > 0) 
       FILTER( isNumeric(?speakingTime) && ?speakingTime > 0) 
 	  ?dataset qb:structure agcom:rilevazioni_pluralismo .
 	  ?subject a foaf:Person,skos:Concept ;

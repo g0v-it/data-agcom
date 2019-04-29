@@ -1,0 +1,18 @@
+# The broadcast weight index (bwi) is a subjective rank related to an estimated audience of TV programs 
+# that is computed starting from the potential audience data provided by AUDITEL according this formula:
+# bwi(observation) = COALESCE( avg_audience(observation.context), avg_audience(observation.context.nework))
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#>
+PREFIX auditel: <https://g0v-it.github.io/ontologies/auditel#>
+PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
+PREFIX local: <urn:local:agicom:>
+
+INSERT { ?observation local:tvi ?tvi} 
+WHERE {
+	?observation local:bwi ?bwi; local:nst ?nst;
+	BIND( (?nst * ?bwi / 5  )  AS ?tvi)
+	
+	FILTER NOT EXISTS  { ?observation local:tvi [] }
+}
