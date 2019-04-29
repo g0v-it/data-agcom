@@ -68,8 +68,8 @@ SD_SPARQL_UPDATE @axioms/024_compute_nst.sparql_update
 SD_SPARQL_UPDATE @axioms/025_compute_bwi.sparql_update
 SD_SPARQL_UPDATE @axioms/030_make_bubblegraph.sparql_update
 SD_SPARQL_UPDATE @axioms/032_make_bubbles.sparql_update
-#SD_SPARQL_UPDATE @axioms/035_make_bubbles_history.sparql_update
-#SD_SPARQL_UPDATE @axioms/036_make_bubbles_previous_value.sparql_update
+SD_SPARQL_UPDATE @axioms/035_make_bubbles_history.sparql_update
+SD_SPARQL_UPDATE @axioms/036_make_bubbles_previous_value.sparql_update
 SD_SPARQL_UPDATE @axioms/040_make_bubblegraph_partitions.sparql_update
 
 
