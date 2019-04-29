@@ -131,6 +131,9 @@ resource:Tria_Giovanni owl:sameAs <http://www.wikidata.org/entity/Q54555492> .
 resource:Bersani_Pierluigi owl:sameAs <http://www.wikidata.org/entity/Q47556> .
 resource:Carabetta_Luca owl:sameAs <http://www.wikidata.org/entity/Q62091235> .
 resource:Calenda_Carlo owl:sameAs <http://www.wikidata.org/entity/Q12467437> .
+resource:Borghi_Aquilini_Claudio owl:sameAs <http://www.wikidata.org/entity/Q16540320> .
+resource:Castaldo_Fabio_Massimo owl:sameAs <http://www.wikidata.org/entity/Q17266683> .
+resource:Siri_Armando owl:sameAs <http://www.wikidata.org/entity/Q52419110> .
 
 resource:Forza_Italia owl:sameAs <http://www.wikidata.org/entity/Q14924303> .
 resource:Fratelli_dItalia owl:sameAs <http://www.wikidata.org/entity/Q1757843> .
