@@ -134,6 +134,9 @@ resource:Calenda_Carlo owl:sameAs <http://www.wikidata.org/entity/Q12467437> .
 resource:Borghi_Aquilini_Claudio owl:sameAs <http://www.wikidata.org/entity/Q16540320> .
 resource:Castaldo_Fabio_Massimo owl:sameAs <http://www.wikidata.org/entity/Q17266683> .
 resource:Siri_Armando owl:sameAs <http://www.wikidata.org/entity/Q52419110> .
+resource:Adinolfi_Mario owl:sameAs <http://www.wikidata.org/entity/Q3848255> .
+resource:Della_Vedova_Benedetto owl:sameAs <http://www.wikidata.org/entity/Q2248530> .
+
 
 resource:Forza_Italia owl:sameAs <http://www.wikidata.org/entity/Q14924303> .
 resource:Fratelli_dItalia owl:sameAs <http://www.wikidata.org/entity/Q1757843> .
@@ -169,3 +172,8 @@ resource:ITALIA1_emittente owl:sameAs <http://www.wikidata.org/entity/Q536346> .
 resource:TGCOM24_emittente owl:sameAs <http://www.wikidata.org/entity/Q3979545> .
 
 
+
+# -----------Manually validated pictures ---------------------------
+resource:Tria_Giovanni foaf:img <https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Giovanni_Tria_and_Giorgio_Napolitano_2012_%28cropped%29.jpg/255px-Giovanni_Tria_and_Giorgio_Napolitano_2012_%28cropped%29.jpg> .
+resource:Cicchitto_Fabrizio foaf:img <https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Fabrizio_Cicchitto_a_Campi_S._%28LE%29.JPG/255px-Fabrizio_Cicchitto_a_Campi_S._%28LE%29.JPG> .
+resource:Borghi_Aquilini_Claudio foaf:img <https://upload.wikimedia.org/wikipedia/commons/2/24/Claudio_Borghi_daticamera_2018.jpg> .
