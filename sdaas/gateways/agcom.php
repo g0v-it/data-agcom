@@ -195,7 +195,8 @@ foreach ($pages as $page) {
                 $riga=$i+1;
                 echo "
 resource:{$id}_p${pageCount}_r${riga} a qb:Observation;
-    dct:title \"Rilevazione estratta da pagina $pageCount riga $riga\"@it;
+    rdfs:label \"${labels[$subject]} su $contextLabel\"@it;
+    rdfs:comment \"Rilevazione AGCOM del tempo di parola di ${labels[$subject]} nel ruolo di ${labels[$role]} su $contextLabel nel periodo $interval\"@it;
     qb:dataSet resource:$id ;
     agcom:subject resource:${subject} ;
     agcom:role resource:${role} ;

@@ -1,0 +1,12 @@
+##################################
+#  Just one prefLabel exists for italian
+################################## 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+
+ASK {
+	#
+    ?s skos:prefLabel ?label1.
+    FILTER( LANG(?label1)="it")
+    FILTER NOT EXISTS { ?s skos:prefLabele ?label2 FILTER( LANG(?label2)="it") FILTER (?label1 != ?label2) }  
+}
+    

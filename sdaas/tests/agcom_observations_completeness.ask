@@ -19,7 +19,9 @@ ASK WHERE {
 
   {
     SELECT (COUNT( distinct ?observation) as ?completeObservations) WHERE {
-      ?observation a qb:Observation ; 
+      ?observation a qb:Observation ;
+      	  rdfs:label ?rdfsLabel; 
+      	  rdfs:comment ?rdfsComment; 
           qb:dataSet ?dataset ;
           agcom:subject ?subject ;
           agcom:role ?role ;
