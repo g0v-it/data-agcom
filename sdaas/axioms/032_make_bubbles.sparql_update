@@ -15,41 +15,6 @@ PREFIX local: <urn:local:agicom:>
 
 
 #
-# AXIOM: find the last dataset and use it to create bubble graph (i.e. Accounts)
-#
-INSERT { ?bgo dct:source ?ds }
-WHERE {
-	{
-		SELECT ?ds ?refPeriod {
-			?ds a qb:DataSet ;
-  				qb:structure agcom:rilevazioni_pluralismo ;
-  				agcom:refPeriod ?refPeriod .
-			?refPeriod time:hasEnd/time:inXSDDateTime ?endDate.
-		} ORDER BY DESC(?endDate) LIMIT 1
-	}
-	
-	?bgo a bgo:BubbleGraph .
-
-	FILTER NOT EXISTS {?bgo dct:source [] }
-}
-
-;
-
-#
-# AXIOM generate the default bubble graph title
-# 
-INSERT { ?bgo dct:title ?title }
-WHERE {
-	?bgo a bgo:BubbleGraph; dct:source/agcom:refPeriod ?refPeriod .
-	?refPeriod scovo:max ?to ; scovo:min ?from .
-	
-	BIND( STRLANG(CONCAT("Visibilità della politica in TV dal ", STR(?from), " al ", STR(?to)), "it") AS ?title )  
-	FILTER NOT EXISTS {?bgo ?title [] }
-}
-
-;
-
-#
 # AXIOM: add acc
 #
 INSERT { 

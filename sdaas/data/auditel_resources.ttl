@@ -18,50 +18,50 @@ resource:auditel_2018_by_emittente a qb:DataSet ;
 resource:oauditel_e1 a qb:Observation ;
     skos:inScheme resource:auditel_2018_by_emittente ;
     auditel:audience 1522061 ;
-    auditel:context resource:Canale_5_emittente .
+    auditel:context resource:CANALE5_emittente .
 
 resource:oauditel_e2 a qb:Observation ;
     skos:inScheme resource:auditel_2018_by_emittente ;
     auditel:audience 465032 ;
-    auditel:context resource:La7_emittente .
+    auditel:context resource:LA7_emittente .
 
 resource:oauditel_e3 a qb:Observation ;
     skos:inScheme resource:auditel_2018_by_emittente ;
     auditel:audience 1832532 ;
-    auditel:context resource:Rai_1_emittente .
+    auditel:context resource:RAI1_emittente .
 
 resource:oauditel_e4 a qb:Observation ;
     skos:inScheme resource:auditel_2018_by_emittente ;
     auditel:audience 594744 ;
-    auditel:context resource:Rai_2_emittente .
+    auditel:context resource:RAI2_emittente .
 
 resource:oauditel_e5 a qb:Observation ;
     skos:inScheme resource:auditel_2018_by_emittente ;
     auditel:audience 624974 ;
-    auditel:context resource:Rai_3_emittente .
+    auditel:context resource:RAI3_emittente .
 
 resource:oauditel_e6 a qb:Observation ;
     skos:inScheme resource:auditel_2018_by_emittente ;
     auditel:audience 61079 ;
-    auditel:context resource:RaiNews24_emittente .
+    auditel:context resource:RAINEWS24_emittente .
 
 resource:oauditel_e7 a qb:Observation ;
     skos:inScheme resource:auditel_2018_by_emittente ;
     auditel:audience 499495 ;
-    auditel:context resource:Rete_4_emittente .
+    auditel:context resource:RETE4_emittente .
 
 resource:oauditel_e8 a qb:Observation ;
     skos:inScheme resource:auditel_2018_by_emittente ;
     auditel:audience 27944 ;
-    auditel:context resource:SkyTg24_emittente .
+    auditel:context resource:SKYTG24_emittente .
 
 resource:oauditel_e9 a qb:Observation ;
     skos:inScheme resource:auditel_2018_by_emittente ;
     auditel:audience 798638 ;
-    auditel:context resource:Italia_1_emittente .
+    auditel:context resource:ITALIA1_emittente .
 
 resource:oauditel_e10 a qb:Observation ;
     skos:inScheme resource:auditel_2018_by_emittente ;
     auditel:audience 51740 ;
-    auditel:context resource:TgCom24_emittente .
+    auditel:context resource:TGCOM24_emittente .
     

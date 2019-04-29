@@ -122,7 +122,7 @@ the test of the build script require at least 2GB of ram available to the docker
 ```
 docker run -d -p 9999:8080 -v $PWD/.:/workspace --name kb linkeddatacenter/sdaas-ce
 docker exec -ti kb bash
-apk --no-cache add php7
+apk --no-cache add php7 php7-mbstring
 # run build process
 sdaas --debug -f build.sdaas --reboot
 # Access the workbench pointing browser to http://localhost:9999/sdaas

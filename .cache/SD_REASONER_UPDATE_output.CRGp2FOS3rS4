@@ -1,0 +1,118 @@
+SPARQL-UPDATE: updateStr=LOAD <file:///tmp/jetty/r-Dk08ZFQ45U.ttl.gz> INTO GRAPH <https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019>
+java.util.concurrent.ExecutionException: java.util.concurrent.ExecutionException: org.openrdf.query.UpdateExecutionException: java.lang.RuntimeException: Could not load: url=file:///tmp/jetty/r-Dk08ZFQ45U.ttl.gz, cause=org.openrdf.rio.RDFParseException: Illegal predicate value: " a qb:DataSet ;
+    dct:source <https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019> ;
+    qb:structure agcom:rilevazioni_pluralismo ;
+    dct:subject
+        sdmx-subject:1.10 ,      # Political and other community activities
+        sdmx-subject:1.11 ,      # Time use
+        sdmx-subject:3.3.3; 	 # Information society
+    agcom:refPeriod <http://reference.data.gov.uk/id/gregorian-month/2019-02" [line 26]
+	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:192)
+	at com.bigdata.rdf.sail.webapp.BigdataServlet.submitApiTask(BigdataServlet.java:286)
+	at com.bigdata.rdf.sail.webapp.QueryServlet.doSparqlUpdate(QueryServlet.java:458)
+	at com.bigdata.rdf.sail.webapp.QueryServlet.doPost(QueryServlet.java:243)
+	at com.bigdata.rdf.sail.webapp.RESTServlet.doPost(RESTServlet.java:269)
+	at com.bigdata.rdf.sail.webapp.MultiTenancyServlet.doPost(MultiTenancyServlet.java:193)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:865)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1655)
+	at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:215)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1642)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:533)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1340)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1242)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:126)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:503)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.util.concurrent.ExecutionException: org.openrdf.query.UpdateExecutionException: java.lang.RuntimeException: Could not load: url=file:///tmp/jetty/r-Dk08ZFQ45U.ttl.gz, cause=org.openrdf.rio.RDFParseException: Illegal predicate value: " a qb:DataSet ;
+    dct:source <https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019> ;
+    qb:structure agcom:rilevazioni_pluralismo ;
+    dct:subject
+        sdmx-subject:1.10 ,      # Political and other community activities
+        sdmx-subject:1.11 ,      # Time use
+        sdmx-subject:3.3.3; 	 # Information society
+    agcom:refPeriod <http://reference.data.gov.uk/id/gregorian-month/2019-02" [line 26]
+	at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:192)
+	at com.bigdata.rdf.sail.webapp.QueryServlet$SparqlUpdateTask.call(QueryServlet.java:569)
+	at com.bigdata.rdf.sail.webapp.QueryServlet$SparqlUpdateTask.call(QueryServlet.java:470)
+	at com.bigdata.rdf.task.ApiTaskForIndexManager.call(ApiTaskForIndexManager.java:68)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	... 1 more
+Caused by: org.openrdf.query.UpdateExecutionException: java.lang.RuntimeException: Could not load: url=file:///tmp/jetty/r-Dk08ZFQ45U.ttl.gz, cause=org.openrdf.rio.RDFParseException: Illegal predicate value: " a qb:DataSet ;
+    dct:source <https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019> ;
+    qb:structure agcom:rilevazioni_pluralismo ;
+    dct:subject
+        sdmx-subject:1.10 ,      # Political and other community activities
+        sdmx-subject:1.11 ,      # Time use
+        sdmx-subject:3.3.3; 	 # Information society
+    agcom:refPeriod <http://reference.data.gov.uk/id/gregorian-month/2019-02" [line 26]
+	at com.bigdata.rdf.sparql.ast.eval.ASTEvalHelper.executeUpdate(ASTEvalHelper.java:1080)
+	at com.bigdata.rdf.sail.BigdataSailUpdate.execute2(BigdataSailUpdate.java:152)
+	at com.bigdata.rdf.sail.webapp.BigdataRDFContext$UpdateTask.doQuery(BigdataRDFContext.java:1968)
+	at com.bigdata.rdf.sail.webapp.BigdataRDFContext$AbstractQueryTask.innerCall(BigdataRDFContext.java:1569)
+	at com.bigdata.rdf.sail.webapp.BigdataRDFContext$AbstractQueryTask.call(BigdataRDFContext.java:1534)
+	at com.bigdata.rdf.sail.webapp.BigdataRDFContext$AbstractQueryTask.call(BigdataRDFContext.java:747)
+	... 4 more
+Caused by: java.lang.RuntimeException: Could not load: url=file:///tmp/jetty/r-Dk08ZFQ45U.ttl.gz, cause=org.openrdf.rio.RDFParseException: Illegal predicate value: " a qb:DataSet ;
+    dct:source <https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019> ;
+    qb:structure agcom:rilevazioni_pluralismo ;
+    dct:subject
+        sdmx-subject:1.10 ,      # Political and other community activities
+        sdmx-subject:1.11 ,      # Time use
+        sdmx-subject:3.3.3; 	 # Information society
+    agcom:refPeriod <http://reference.data.gov.uk/id/gregorian-month/2019-02" [line 26]
+	at com.bigdata.rdf.sparql.ast.eval.AST2BOpUpdate.convertLoadGraph(AST2BOpUpdate.java:1411)
+	at com.bigdata.rdf.sparql.ast.eval.AST2BOpUpdate.convertUpdateSwitch(AST2BOpUpdate.java:439)
+	at com.bigdata.rdf.sparql.ast.eval.AST2BOpUpdate.convertUpdate(AST2BOpUpdate.java:293)
+	at com.bigdata.rdf.sparql.ast.eval.ASTEvalHelper.executeUpdate(ASTEvalHelper.java:1072)
+	... 9 more
+Caused by: org.openrdf.rio.RDFParseException: Illegal predicate value: " a qb:DataSet ;
+    dct:source <https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019> ;
+    qb:structure agcom:rilevazioni_pluralismo ;
+    dct:subject
+        sdmx-subject:1.10 ,      # Political and other community activities
+        sdmx-subject:1.11 ,      # Time use
+        sdmx-subject:3.3.3; 	 # Information society
+    agcom:refPeriod <http://reference.data.gov.uk/id/gregorian-month/2019-02" [line 26]
+	at org.openrdf.rio.helpers.RDFParserHelper.reportFatalError(RDFParserHelper.java:441)
+	at org.openrdf.rio.helpers.RDFParserBase.reportFatalError(RDFParserBase.java:671)
+	at org.openrdf.rio.turtle.TurtleParser.reportFatalError(TurtleParser.java:1306)
+	at org.openrdf.rio.turtle.TurtleParser.parsePredicate(TurtleParser.java:485)
+	at org.openrdf.rio.turtle.TurtleParser.parsePredicateObjectList(TurtleParser.java:396)
+	at org.openrdf.rio.turtle.TurtleParser.parseTriples(TurtleParser.java:385)
+	at org.openrdf.rio.turtle.TurtleParser.parseStatement(TurtleParser.java:261)
+	at org.openrdf.rio.turtle.TurtleParser.parse(TurtleParser.java:216)
+	at org.openrdf.rio.turtle.TurtleParser.parse(TurtleParser.java:159)
+	at com.bigdata.rdf.sparql.ast.eval.AST2BOpUpdate.doLoad(AST2BOpUpdate.java:1653)
+	at com.bigdata.rdf.sparql.ast.eval.AST2BOpUpdate.convertLoadGraph(AST2BOpUpdate.java:1396)
+	... 12 more

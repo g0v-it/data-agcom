@@ -1,0 +1,7 @@
+sdaas Fri Apr 19 14:02:09 UTC 2019 - SD_START_LOGGING logging .cache/session_2487.log
+sdaas Fri Apr 19 14:02:09 UTC 2019 - SD_START_LOGGING debug info in .cache/session_2487.debug
+sdaas Fri Apr 19 14:02:09 UTC 2019 - LinkedData.Center SDaaS platform (Anassimene) using 'kb' graph technology.
+sdaas Fri Apr 19 14:02:20 UTC 2019 - activity pJhh0cbjtK starded learning of graph <https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019>
+sdaas Fri Apr 19 14:02:20 UTC 2019 - activity pJhh0cbjtK downloaded https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019
+sdaas Fri Apr 19 14:02:22 UTC 2019 - activity pJhh0cbjtK files in 'in/*' processed with 'cat'. Results sent to 'out'
+sdaas Fri Apr 19 14:02:22 UTC 2019 - activity pJhh0cbjtK completed by replacing graph <https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019>

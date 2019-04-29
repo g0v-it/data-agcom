@@ -4,6 +4,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix agcom: <https://g0v-it.github.io/ontologies/agcom#> .
 @prefix resource: <http://agcom.linkeddata.cloud/resource/> . 
 
 #
@@ -23,16 +24,16 @@ resource:emittenti a skos:ConceptScheme ;
     dct:title "Canali televisivi"@it ;
     dct:description "Emittenti che trasmettono programmi televisivi"@it ;
     skos:hasTopConcept
-		resource:Canale_5_emittente,
-		resource:La7_emittente,
-		resource:Rai_1_emittente,
-		resource:Rai_2_emittente,
-		resource:Rai_3_emittente,
-		resource:RaiNews24_emittente,
-		resource:Rete_4_emittente,
-		resource:SkyTg24_emittente,
-		resource:Italia_1_emittente,
-		resource:TgCom24_emittente
+		resource:CANALE5_emittente,
+		resource:LA7_emittente,
+		resource:RAI1_emittente,
+		resource:RAI2_emittente,
+		resource:RAI3_emittente,
+		resource:RAINEWS24_emittente,
+		resource:RETE4_emittente,
+		resource:SKYTG24_emittente,
+		resource:ITALIA1_emittente,
+		resource:TGCOM24_emittente
 .
 
 #
@@ -65,9 +66,9 @@ resource:soggetto_istituzionale skos:prefLabel "Soggetto istituzionale"@it .
 resource:soggetto_politico skos:prefLabel "Soggetto politico"@it .
 resource:soggetto_individuale skos:prefLabel "Soggetto individuale"@it .
 
-resource:La7_emittente skos:prefLabel "La7 (emittente)"@it .
-resource:SkyTg24_emittente skos:prefLabel "SkyTg24 (emittente)"@it .
-resource:TgCom24_emittente skos:prefLabel "TgCom24 (emittente)"@it .
+resource:LA7_emittente skos:prefLabel "LA7 (emittente)"@it .
+resource:SKYTG24_emittente skos:prefLabel "SKYTG24 (emittente)"@it .
+resource:TGCOM24_emittente skos:prefLabel "TGCOM24 (emittente)"@it .
 
 # ------------ manually defined skos concept relation -----------
 resource:Governo skos:broader resource:soggetto_istituzionale .
@@ -76,36 +77,37 @@ resource:Presidente_della_Repubblica skos:broader resource:soggetto_istituzional
 resource:Presidente_della_Camera skos:broader resource:soggetto_istituzionale .
 resource:Unione_Europea skos:broader resource:soggetto_istituzionale .
 
-resource:Canale_5_emittente skos:related resource:Mediaset_editore .
-resource:La7_emittente skos:related resource:Cairo_editore .
-resource:Rai_1_emittente skos:related resource:Rai_editore .
-resource:Rai_2_emittente skos:related resource:Rai_editore .
-resource:Rai_3_emittente skos:related resource:Rai_editore  .
-resource:RaiNews24_emittente skos:related resource:Rai_editore .
-resource:Rete_4_emittente skos:related resource:Mediaset_editore  .
-resource:SkyTg24_emittente skos:related resource:Sky_Italia_editore  .
-resource:Italia_1_emittente skos:related resource:Mediaset_editore  .
-resource:TgCom24_emittente skos:related resource:Mediaset_editore  .
+resource:CANALE5_emittente skos:related resource:Mediaset_editore .
+resource:LA7_emittente skos:related resource:Cairo_editore .
+resource:RAI1_emittente skos:related resource:Rai_editore .
+resource:RAI2_emittente skos:related resource:Rai_editore .
+resource:RAI3_emittente skos:related resource:Rai_editore  .
+resource:RAINEWS24_emittente skos:related resource:Rai_editore .
+resource:RETE4_emittente skos:related resource:Mediaset_editore  .
+resource:SKYTG24_emittente skos:related resource:Sky_Italia_editore  .
+resource:ITALIA1_emittente skos:related resource:Mediaset_editore  .
+resource:TGCOM24_emittente skos:related resource:Mediaset_editore  .
 
-resource:Tg1_programma skos:related resource:Rai_1_emittente .
-resource:Tg2_programma skos:related resource:Rai_2_emittente .
-resource:Tg3_programma skos:related resource:Rai_3_emittente .
-resource:Tg4_programma skos:related resource:Rete_4_emittente .
-resource:Tg5_programma skos:related resource:Canale_5_emittente .
-resource:Studio_Aperto_programma skos:related resource:Italia_1_emittente .
-resource:TgCom24_programma skos:related resource:TgCom24_emittente .
-resource:TgCom24-extra_tg_programma skos:related resource:TgCom24_emittente .
-resource:Canale_5-extra_tg_programma skos:related resource:Canale_5_emittente .
-resource:La7_programma skos:related resource:La7_emittente .
-resource:La7-extra_tg_programma skos:related resource:La7_emittente .
-resource:Rai_1-extra_tg_programma skos:related resource:Rai_1_emittente .
-resource:Rai_2-extra_tg_programma skos:related resource:Rai_2_emittente .
-resource:Rai_3-extra_tg_programma skos:related resource:Rai_3_emittente .
-resource:Rai_News_programma skos:related resource:RaiNews24_emittente .
-resource:Rai_News-extra_tg_programma skos:related resource:RaiNews24_emittente .
-resource:Rete_4-extra_tg_programma skos:related resource:Rete_4_emittente .
-resource:Sky_Tg24_programma skos:related resource:SkyTg24_emittente .
-resource:Sky_Tg24-extra_tg_programma skos:related resource:SkyTg24_emittente .
+resource:TG1_programma skos:related resource:RAI1_emittente .
+resource:TG2_programma skos:related resource:RAI2_emittente .
+resource:TG3_programma skos:related resource:RAI3_emittente .
+resource:TG4_programma skos:related resource:RETE4_emittente .
+resource:TG5_programma skos:related resource:CANALE5_emittente .
+resource:STUDIOAPERTO_programma skos:related resource:ITALIA1_emittente .
+resource:TGCOM24_programma skos:related resource:TGCOM24_emittente .
+resource:TGCOM24-extra_tg_programma skos:related resource:TGCOM24_emittente .
+resource:CANALE5-extra_tg_programma skos:related resource:CANALE5_emittente .
+resource:ITALIA1-extra_tg_programma skos:related resource:ITALIA1_emittente .
+resource:TGLA7_programma skos:related resource:LA7_emittente .
+resource:LA7-extra_tg_programma skos:related resource:LA7_emittente .
+resource:RAI1-extra_tg_programma skos:related resource:RAI1_emittente .
+resource:RAI2-extra_tg_programma skos:related resource:RAI2_emittente .
+resource:RAI3-extra_tg_programma skos:related resource:RAI3_emittente .
+resource:RAINEWS_programma skos:related resource:RAINEWS24_emittente .
+resource:RAINEWS-extra_tg_programma skos:related resource:RAINEWS24_emittente .
+resource:RETE4-extra_tg_programma skos:related resource:RETE4_emittente .
+resource:SKYTG24_programma skos:related resource:SKYTG24_emittente .
+resource:SKYTG24-extra_tg_programma skos:related resource:SKYTG24_emittente .
 
 
 # -----------Manually validated linked data ---------------------------
@@ -131,14 +133,13 @@ resource:Carabetta_Luca owl:sameAs <http://www.wikidata.org/entity/Q62091235> .
 resource:Calenda_Carlo owl:sameAs <http://www.wikidata.org/entity/Q12467437> .
 
 resource:Forza_Italia owl:sameAs <http://www.wikidata.org/entity/Q14924303> .
-resource:Fratelli_d_Italia owl:sameAs <http://www.wikidata.org/entity/Q1757843> .
+resource:Fratelli_dItalia owl:sameAs <http://www.wikidata.org/entity/Q1757843> .
 resource:Lega owl:sameAs <http://www.wikidata.org/entity/Q47750> .
-resource:Lega_Nord owl:sameAs <http://www.wikidata.org/entity/Q47750> .
 resource:Liberi_e_Uguali owl:sameAs <http://www.wikidata.org/entity/Q44929224> .
 resource:M5S owl:sameAs <http://www.wikidata.org/entity/Q47817> .
 resource:PD owl:sameAs <http://www.wikidata.org/entity/Q47729> .
 resource:Per_le_Autonomie-Minoranze_linguistiche owl:sameAs <http://www.wikidata.org/entity/Q12857400> .
-resource:PiuEuropa-Centro_Democratico owl:sameAs <http://www.wikidata.org/entity/Q47090559> .
+resource:PiuEuropa_Centro_Democratico owl:sameAs <http://www.wikidata.org/entity/Q47090559> .
 
 resource:Governo owl:sameAs <http://www.wikidata.org/entity/Q3773971> .
 resource:Presidente_del_Consiglio owl:sameAs <http://www.wikidata.org/entity/Q796897> .
@@ -153,15 +154,15 @@ resource:Rai_editore owl:sameAs <http://www.wikidata.org/entity/Q19616> .
 resource:Sky_Italia_editore  owl:sameAs <http://www.wikidata.org/entity/Q796719> .
 
 
-resource:Canale_5_emittente owl:sameAs <http://www.wikidata.org/entity/Q617643> .
-resource:La7_emittente owl:sameAs <http://www.wikidata.org/entity/Q1235261> .
-resource:Rai_1_emittente owl:sameAs <http://www.wikidata.org/entity/Q258131> .
-resource:Rai_2_emittente owl:sameAs <http://www.wikidata.org/entity/Q914349> .
-resource:Rai_3_emittente owl:sameAs <http://www.wikidata.org/entity/Q643447> .
-resource:RaiNews24_emittente owl:sameAs <http://www.wikidata.org/entity/Q125875> .
-resource:Rete_4_emittente owl:sameAs <http://www.wikidata.org/entity/Q1088023> .
-resource:SkyTg24_emittente owl:sameAs <http://www.wikidata.org/entity/Q1174202> .
-resource:Italia_1_emittente owl:sameAs <http://www.wikidata.org/entity/Q536346> .
-resource:TgCom24_emittente owl:sameAs <http://www.wikidata.org/entity/Q3979545> .
+resource:CANALE5_emittente owl:sameAs <http://www.wikidata.org/entity/Q617643> .
+resource:LA7_emittente owl:sameAs <http://www.wikidata.org/entity/Q1235261> .
+resource:RAI1_emittente owl:sameAs <http://www.wikidata.org/entity/Q258131> .
+resource:RAI2_emittente owl:sameAs <http://www.wikidata.org/entity/Q914349> .
+resource:RAI3_emittente owl:sameAs <http://www.wikidata.org/entity/Q643447> .
+resource:RAINEWS24_emittente owl:sameAs <http://www.wikidata.org/entity/Q125875> .
+resource:RETE4_emittente owl:sameAs <http://www.wikidata.org/entity/Q1088023> .
+resource:SKYTG24_emittente owl:sameAs <http://www.wikidata.org/entity/Q1174202> .
+resource:ITALIA1_emittente owl:sameAs <http://www.wikidata.org/entity/Q536346> .
+resource:TGCOM24_emittente owl:sameAs <http://www.wikidata.org/entity/Q3979545> .
 
 

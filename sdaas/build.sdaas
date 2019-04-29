@@ -13,17 +13,36 @@ SD_LOG  "Start learning window..."
 SD_LEARN urn:sdaas:config "data/kees.ttl"
 SD_LEARN "${GRAPH}g0v_app_graph" "data/g0v_app.ttl"
 
-SD_LEARN "${GRAPH}agcom_resources_graph" "data/agcom_resources.ttl"
+SD_LEARN http://reference.data.gov.uk/id/gregorian-year/2018
+SD_LEARN http://reference.data.gov.uk/id/quarter/2019-Q1
 SD_LEARN "${GRAPH}auditel_resources_graph" data/auditel_resources.ttl
 SD_LEARN "${GRAPH}190412_TG_ITrim2019_graph" data/190412_TG_ITrim2019.ttl
-SD_LEARN "${GRAPH}2019_02_agcom_graph" data/2019_02_agcom.ttl
 
 SD_LEARN http://g0v-it.github.io/ontologies/agcom https://g0v-it.github.io/ontologies/agcom/v1.ttl
 SD_LEARN http://g0v-it.github.io/ontologies/auditel https://g0v-it.github.io/ontologies/auditel/v1.ttl
 
-SD_LEARN http://reference.data.gov.uk/id/gregorian-year/2018
-SD_LEARN http://reference.data.gov.uk/id/gregorian-month/2019-02
-SD_LEARN http://reference.data.gov.uk/id/quarter/2019-Q1
+SD_LEARN "${GRAPH}agcom_resources_graph" "data/agcom_resources.ttl"
+
+function LOAD_AGICOM_DATA {
+	local source="$1"
+	local from="$2"
+	local to="$3"
+	
+	start_ts=$(date -d "$from" '+%s')
+	end_ts=$(date -d "$to" '+%s')	
+	dayPeriod=$(( ( end_ts - start_ts )/86400 + 1 ))
+	interval="${from}T00:00:00/P${dayPeriod}D"
+	
+	local period="http://reference.data.gov.uk/id/gregorian-interval/$interval"
+
+	SD_LEARN "${period}"
+	SD_LEARN "$source" "$source" "php gateways/agcom.php ${source}#${interval}|in|out|.ttl|"
+}
+LOAD_AGICOM_DATA "https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019" 2019-02-01 2019-02-28
+LOAD_AGICOM_DATA "https://www.agcom.it/documents/10179/14509260/Dati+monitoraggio+03-04-2019" 2019-03-25 2019-03-31
+LOAD_AGICOM_DATA "https://www.agcom.it/documents/10179/14509260/Dati+monitoraggio+10-04-2019" 2019-04-01 2019-04-07
+LOAD_AGICOM_DATA "https://www.agcom.it/documents/10179/14509260/Dati+monitoraggio+24-04-2019" 2019-04-08 2019-04-21
+
 
 ####################################################
 SD_LOG  "Linking data... "
@@ -35,6 +54,8 @@ SD_SPARQL_UPDATE @linked_data/import_tv_channels_from_wikidata.sparql_update
 
 SD_SPARQL_UPDATE @linked_data/import_deputati.sparql_update
 SD_SPARQL_UPDATE @linked_data/import_senatori.sparql_update
+
+
 ####################################################
 SD_LOG  "Starting reasoning window... "
 ####################################################
@@ -45,10 +66,11 @@ SD_SPARQL_UPDATE @axioms/022_find_missing_pref_labels.sparql_update
 SD_SPARQL_UPDATE @axioms/023_find_missing_person_img.sparql_update
 SD_SPARQL_UPDATE @axioms/024_compute_nst.sparql_update
 SD_SPARQL_UPDATE @axioms/025_compute_bwi.sparql_update
-SD_SPARQL_UPDATE @axioms/030_make_bubbles.sparql_update
+SD_SPARQL_UPDATE @axioms/030_make_bubblegraph.sparql_update
+SD_SPARQL_UPDATE @axioms/032_make_bubbles.sparql_update
 #SD_SPARQL_UPDATE @axioms/035_make_bubbles_history.sparql_update
 #SD_SPARQL_UPDATE @axioms/036_make_bubbles_previous_value.sparql_update
-SD_SPARQL_UPDATE @axioms/040_make_bubblegraph.sparql_update
+SD_SPARQL_UPDATE @axioms/040_make_bubblegraph_partitions.sparql_update
 
 
 ####################################################

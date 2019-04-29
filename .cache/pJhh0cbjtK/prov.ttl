@@ -1,0 +1,21 @@
+@prefix : <urn:sdaas:resource:pJhh0cbjtK_> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2000/10/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix kees: <http://linkeddata.center/kees/v1#> .
+
+:activity a prov:Activity;
+    prov:qualifiedAssociation :activity_owner.
+:activity_owner a prov:Association ;
+    prov:agent <https://linkeddata.center/agent/anassimene#me> ;
+    prov:hadRole kees:namedGraphGenerator ;
+    prov:hadPlan """learning of graph <https://www.agcom.it/documents/10179/14239063/Dati+monitoraggio+13-03-2019>""".
+:activity prov:startedAtTime "2019-04-19T14:02:20"^^xsd:datetime .
+:activity prov:wasInfluencedBy :extraction. :extraction a prov:Activity; prov:startedAtTime "2019-04-19T14:02:20"^^xsd:datetime .
+:extraction prov:generated <urn:sdaas:cache:pJhh0cbjtK:in/b2c7b5c4c7398392e4fb4cad0c61c0e6.data> .
+:extraction prov:endedAtTime "2019-04-19T14:02:20"^^xsd:datetime .
+:activity prov:wasInfluencedBy :transformation. :transformation a prov:Activity; prov:wasInformedBy :extraction; prov:startedAtTime "2019-04-19T14:02:20"^^xsd:datetime .
+:transformation prov:used <urn:sdaas:cache:pJhh0cbjtK:in/b2c7b5c4c7398392e4fb4cad0c61c0e6.data)>; prov:generated <urn:sdaas:cache:pJhh0cbjtK:out/b2c7b5c4c7398392e4fb4cad0c61c0e6.ttl> .
+:transformation prov:endedAtTime "2019-04-19T14:02:22"^^xsd:datetime .

@@ -18,35 +18,35 @@ resource:auditel_2019_1Q_by_programma a qb:DataSet ;
 resource:oauditel_1 a qb:Observation ;
     skos:inScheme resource:auditel_2019_1Q_by_programma ;
     auditel:audience 3706590 ;
-    auditel:context resource:Tg5_programma .
+    auditel:context resource:TG5_programma .
 
 resource:oauditel_2 a qb:Observation ;
     skos:inScheme resource:auditel_2019_1Q_by_programma ;
     auditel:audience 976107 ;
-    auditel:context resource:La7_programma .
+    auditel:context resource:TGLA7_programma .
 
 resource:oauditel_3 a qb:Observation ;
     skos:inScheme resource:auditel_2019_1Q_by_programma ;
     auditel:audience 4581282 ;
-    auditel:context resource:Tg1_programma .
+    auditel:context resource:TG1_programma .
 
 resource:oauditel_4 a qb:Observation ;
     skos:inScheme resource:auditel_2019_1Q_by_programma ;
     auditel:audience 1967760 ;
-    auditel:context resource:Tg2_programma .
+    auditel:context resource:TG2_programma .
 
 resource:oauditel_5 a qb:Observation ;
     skos:inScheme resource:auditel_2019_1Q_by_programma ;
     auditel:audience 1943319 ;
-    auditel:context resource:Tg3_programma .
+    auditel:context resource:TG3_programma .
 
 resource:oauditel_6 a qb:Observation ;
     skos:inScheme resource:auditel_2019_1Q_by_programma ;
     auditel:audience 523284 ;
-    auditel:context resource:Tg4_programma .
+    auditel:context resource:TG4_programma .
 
 resource:oauditel_7 a qb:Observation ;
     skos:inScheme resource:auditel_2019_1Q_by_programma ;
     auditel:audience 1106231 ;
-    auditel:context resource:Studio_Aperto_programma .
+    auditel:context resource:STUDIOAPERTO_programma .
  

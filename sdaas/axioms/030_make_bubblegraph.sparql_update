@@ -1,0 +1,76 @@
+#
+# Default metadata for BubbleGraph 
+#
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX bgo: <http://linkeddata.center/lodmap-bgo/v1#>
+PREFIX accounts: <https://data.agcom.g0v.it/ldp/accounts#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX interval: <http://reference.data.gov.uk/def/intervals/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#>
+PREFIX scovo: <http://purl.org/NET/scovo#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
+
+
+
+#
+# AXIOM: find the last dataset and use it to create bubble graph (i.e. Accounts)
+#
+INSERT { ?bgo dct:source ?ds }
+WHERE {
+	{
+		SELECT ?ds ?refPeriod {
+			?ds a qb:DataSet ;
+  				qb:structure agcom:rilevazioni_pluralismo ;
+  				agcom:refPeriod ?refPeriod .
+			?refPeriod time:hasEnd/time:inXSDDateTime ?endDate.
+		} ORDER BY DESC(?endDate) LIMIT 1
+	}
+	
+	?bgo a bgo:BubbleGraph .
+
+	FILTER NOT EXISTS {?bgo dct:source [] }
+}
+
+;
+
+#
+# AXIOM generate the default bubble graph title
+# 
+INSERT { ?bgo dct:title ?title }
+WHERE {
+	?bgo a bgo:BubbleGraph; dct:source/agcom:refPeriod ?refPeriod .
+	?refPeriod scovo:max ?to ; scovo:min ?from .
+	
+	BIND( STRLANG(CONCAT("Politica in TV dal ", STRBEFORE(STR(?from),"T"), " al ", STRBEFORE(STR(?to),"T")), "it") AS ?title )  
+	FILTER NOT EXISTS {?bgo ?title [] }
+}
+
+;
+
+
+#
+# AXIOM Set  Bubble Graph title from source dataset (if scovo not present)
+# 
+
+INSERT { ?bgo dct:title ?title } 
+WHERE {
+ 	?bgo a bgo:BubbleGraph ; 
+ 		dct:source/dct:title ?title . 
+ 	
+	FILTER NOT EXISTS { ?bgo dct:title  []}
+}
+
+;
+
+#
+# Set  Bubble Graph description from source dataset
+#
+INSERT { ?bgo dct:description ?description } 
+WHERE {
+ 	?bgo a bgo:BubbleGraph ; 
+ 		dct:source/dct:description ?description . 
+ 	
+	FILTER NOT EXISTS { ?bgo dct:description  []}
+}
