@@ -11,23 +11,23 @@ Following data sources are considered:
 
 - AGCOM open data 
 - AUDITEL public data
-- open data from Camera dei deputati and SENATO
-- Wikidata
-- LODMAP configuration data
+- Linked Open Data from Camera dei deputati and Senato
+- Linked Open Data from Wikidata
+- Linked Open Data from UK services
 - KEES configuration data
-- Reference periods from UK services
+- LODMAP configuration data
 
 
 ### AGCOM raw data
 
-AGCOM collects periodic records about the presence of politicians in main TV shows.
-Source raw datasets are published in the [AGCOM web site](https://www.agcom.it/).
+AGCOM publishes in its [web site](https://www.agcom.it/) periodic reports about the presence of politicians in main TV shows.
 See [this page as example](https://www.agcom.it/documentazione/documento?p_p_auth=fLw7zRht&p_p_id=101_INSTANCE_ls3TZlzsK0hm&p_p_lifecycle=0&p_p_col_id=column-1&p_p_col_count=1&_101_INSTANCE_ls3TZlzsK0hm_struts_action=%2Fasset_publisher%2Fview_content&_101_INSTANCE_ls3TZlzsK0hm_assetEntryId=14262570&_101_INSTANCE_ls3TZlzsK0hm_type=document)
 
-AGCOM publishes data about the speaking time of a person in a specific policical or institutional role, detected in a specific TV show 
-during a reference period. AGCOM distinguishes between main news program and in-depth programs for journalistic publications.
+AGCOM collects data about the speaking time of a person in a specific political or institutional role, detected during a 
+specific TV show in a reference period. AGCOM reports distinguish between main news programs and other in-depth programs for journalistic publications.
 
-For example, ISTAT collects the total speaking time in the period 1/4/2019 - 7/4/2019 of Matteo Salvini speaching with the institutional role of GovermentMinistry in the main news program (TG1) in the RAI 1 broadcast network. In the same period, the same subject, in the same tv show, can also speak with the political role of *Lega party* leader. In this case AGCOM produce two distinct records (i.e. observations).
+For example, ISTAT collects the total speaking time in february 2019 of Matteo Salvini  with the institutional role of Goverment Ministry in the main news program (TG1) of the RAI 1 broadcast network. In the same period, the same subject, in the same tv show, can also speak with the political role of *Lega party* leader. In this case AGCOM produces two distinct records (i.e. observations).
+
 
 ### AUDITEL public data
 
@@ -38,14 +38,18 @@ This project uses the  [2018 Sintesi Annuale 2018 file](http://www.auditel.it/me
 to estimate the audience of the broadcaster networks refereed in AGCOM data. The data are manually extracted 
 form the AUDITEL site and stored in the  [data/2018_auditel.ttl file](data/2018_auditel.ttl)
 
-### open data from Camera dei deputati and Senato
+### Linked Open Data from Camera dei deputati and Senato
 
 The name and picture of all Italian parliament members in the XVIII legislatura are extracted from
 official SPARQL end points
 
-### Wikidata 
+### Linked Open Data from Wikidata
 
 Provides pictures and descriptions about persons, TV shows, networks and editors.
+
+### Linked Open Data from UK services
+
+The great [UK reference linked data](http://reference.data.gov.uk/) are used to formally describe observation periods
 
 ### LODMAP data visualization application configuration
 
@@ -72,7 +76,7 @@ the [RDF Data Cube Vocabulary](https://www.w3.org/TR/vocab-data-cube/)
 Raw data are are translated to RDF turtle data stream through simple [PHP gateways](gateways) and
 the resulting triples are stored in a RDF graph database.
 
-##  Data visualization axioms
+## Data visualization axioms
 
 For each AGCOM observation, a **normalized dailiy speaking time** (nst) is calculated using the formula `nst := seconds_in(speakingTime)/days_in(refPeriod )` 
 
