@@ -24,8 +24,10 @@ AGCOM collects periodic records about the presence of politicians in main TV sho
 Source raw datasets are published in the [AGCOM web site](https://www.agcom.it/).
 See [this page as example](https://www.agcom.it/documentazione/documento?p_p_auth=fLw7zRht&p_p_id=101_INSTANCE_ls3TZlzsK0hm&p_p_lifecycle=0&p_p_col_id=column-1&p_p_col_count=1&_101_INSTANCE_ls3TZlzsK0hm_struts_action=%2Fasset_publisher%2Fview_content&_101_INSTANCE_ls3TZlzsK0hm_assetEntryId=14262570&_101_INSTANCE_ls3TZlzsK0hm_type=document)
 
-Waiting for open data publishing, the data are manually extracted form the AGCOM PDF reports 
-and stored in the  [data directory](data)
+AGCOM publishes data about the speaking time of a person in a specific policical or institutional role, detected in a specific TV show 
+during a reference period. AGCOM distinguishes between main news program and in-depth programs for journalistic publications.
+
+For example, ISTAT collects the total speaking time in the period 1/4/2019 - 7/4/2019 of Matteo Salvini speaching with the institutional role of GovermentMinistry in the main news program (TG1) in the RAI 1 broadcast network. In the same period, the same subject, in the same tv show, can also speak with the political role of *Lega party* leader. In this case AGCOM produce two distinct records (i.e. observations).
 
 ### AUDITEL public data
 
@@ -36,7 +38,7 @@ This project uses the  [2018 Sintesi Annuale 2018 file](http://www.auditel.it/me
 to estimate the audience of the broadcaster networks refereed in AGCOM data. The data are manually extracted 
 form the AUDITEL site and stored in the  [data/2018_auditel.ttl file](data/2018_auditel.ttl)
 
-### open data from Camera dei deputati and SENATO
+### open data from Camera dei deputati and Senato
 
 The name and picture of all Italian parliament members in the XVIII legislatura are extracted from
 official SPARQL end points
@@ -45,7 +47,7 @@ official SPARQL end points
 
 Provides pictures and descriptions about persons, TV shows, networks and editors.
 
-### LODMAP data visualization configuration
+### LODMAP data visualization application configuration
 
 The [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/v1/bgo) 
 is used to describe the graphical objects that represent the presence of politics in TV.
@@ -72,37 +74,25 @@ the resulting triples are stored in a RDF graph database.
 
 ##  Data visualization axioms
 
-For each observation, a **normalized speaking time** (nst) is calculated using the formula:
+For each AGCOM observation, a **normalized dailiy speaking time** (nst) is calculated using the formula `nst := seconds_in(speakingTime)/days_in(refPeriod )` 
 
-`nst := seconds_in(speakingTime)/days_in(refPeriod )` 
+For each AGCOM observation, the **broadcast weight index** (bwi) is a subjective rank related to an estimated audience of TV programs 
+that is computed starting from the potential audience data provided by AUDITEL according with the formula `bwi(observation) = COALESCE( avg_audience(observation.context), avg_audience(observation.context.nework))` that considers the  potential audience of a specific tv program (e.g. Tg1) or of the whole TV channel (e.g. Rai 1).
 
-The **speaking time** is the time that an individual subject with a specific role, uses in a TV channel.
-Only main news programs (TG) are considered, all other programs are consolidated in a general "extra tg" container for each broadcast channel. The speaking time is provided by AGCOM
-
-The broadcast weight index (bwi) is a subjective rank related to an estimated audience of TV programs 
-that is computed starting from the potential audience data provided by AUDITEL according with the formula:
-
-`bwi(observation) = COALESCE( avg_audience(observation.context), avg_audience(observation.context.nework))`
-
-that consider the  potential audience of a specific tv program (e.g. Tg1) or of the whole TV channel (e.g. Rai 1).
-
-The **daily listening time** (dlt) is defined as `bwi(observation) * bwi(observation))`
+For each AGCOM observation, the **normalized daily listening time** (dlt) is defined as `bwi(observation) * bwi(observation))`
 
 There are some heuristics & guidelines that estimates that a speaker can pronunciate
 an average rate of 100 - 125 words per minute. That is 2 words per second. Because an average sentence is composed by
-10 words, we introduce a metric called **TV impressions**(TVI) computed by dividing by 5 the daily listening time. That is `bwi(observation) * nst(observation) / 5`
+10 words, we introduce a metric called **TV impressions** (tvi) computed by dividing by 5 the daily listening time. That is `bwi(observation) * nst(observation) / 5`
  
-In other words, the  **TV impressions** (TVi) are just a rough estimation of the daily number of
-sentences delivered to all TV watchers.
+In other words, the  *TV impressions*  are just a rough estimation of the daily number of
+sentences delivered to all potential TV watchers.
 
 For example: a 30-second speech in a TV program in a day with an audience of 1000000 of people is 
 equivalent to 6000000 of TV impressions (i.e. 30*1000000/5 ).
 
-
-The metrics [bwi](axioms/025_compute_bwi.sparql_update) and [nst](axioms/024_compute_nst.sparql_update)
-are computed by a specific sparql axioms.
-The "daily TV impressions" is computed in [make_bubbles axiom](axioms/030_make_bubbles.sparql_update) 
-
+The metrics [tvi](axioms/025_compute_tvi.sparql_update), [bwi](axioms/025_compute_bwi.sparql_update) and 
+[nst](axioms/024_compute_nst.sparql_update) are computed by a specific sparql axioms.
 
 
 ## Updating the knowledge base
