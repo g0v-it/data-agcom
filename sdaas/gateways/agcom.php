@@ -63,16 +63,7 @@ function normalizeLabel($label) {
     $label = preg_replace('/\s+/', '_', $label);
     $label = preg_replace('/_/', ' ', $label);
     $label = trim($label);
-    $label = ucwords($label);
-    
-    // special cases
-    if( $label=='Governo/ Ministri/ Sottosegretari') {
-        $label='Governo';
-    } elseif($label=='Movimento 5 Stelle') {
-        $label='M5S';
-    } elseif($label=='PD') {
-        $label='Partito Democratico';
-    }
+    $label = strtoupper($label);
     
     return $label ;
 }
@@ -227,6 +218,8 @@ resource:{$id}_p${pageCount}_r${riga} a qb:Observation;
 
 
 // Serializza le labels associate ai concetti
-#echo "\n\n# Concept labels: \n\n";
-#foreach( $labels as $token => $label) echo "resource:${token} skos:prefLabel \"$label\"@it .\n";
+echo "\n\n# Concept hidden labels: \n\n";
+foreach( $labels as $token => $label) {
+    echo "resource:${token} skos:hiddenLabel \"$label\"@it .\n";
+}
 
