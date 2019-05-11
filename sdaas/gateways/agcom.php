@@ -7,7 +7,11 @@
  */
 include 'vendor/autoload.php';
 
-function usage($note='') {die($note."(usage: agcom <source>#<gregorianUnit>/<id>  <input file>)\n");}
+function usage($note='') {
+    $usage="agcom <source>#<gregorianUnit>/YYY-MM-DDTmm:ss/PddD  <input file>";
+    $example="php agcom.php https://www.agcom.it/documents/10179/14509260/Dati+monitoraggio+24-04-2019#2019-04-08T00:00:00/P14D tests/data/test1.pdf";
+   die($note."\nusage: $usage)\n$example\n");
+}
 
 isset($argv[2]) || usage("no file");
 
@@ -85,6 +89,7 @@ function strToAgcomId($str) {
     
     // casi speciali
     $str = str_replace('+_Europa', 'PiuEuropa', $str);
+    $str = str_replace('+Europa', 'PiuEuropa', $str);
     $str = str_replace('Governo/_Ministri/_Sottosegretari', 'Governo', $str);
     $str = str_replace('Fratelli_d_Italia', 'Fratelli_dItalia', $str);
     $str = str_replace('Partito_Democratico', 'PD', $str);
@@ -122,6 +127,12 @@ function getContext($pageText) {
     elseif (preg_match( "/^Ranking Telegiornali\s+$/",$pageText[0], $matches)) {
         $extraTg = false;
         preg_match ("/(.*):/",$pageText[1], $matches) || die (print_r($pageText,1));//"invalid format in line 1(${pageText[1]})");
+        $context = preg_replace('/\s+/', '', $matches[1]);
+    }
+    
+    // Formato usato nel report 14509260/Dati+monitoraggio+07-05-2019 tg
+    elseif (preg_match( "/^Ranking Telegiornali\s+(.+):/",$pageText[0], $matches)) {
+        $extraTg = false;
         $context = preg_replace('/\s+/', '', $matches[1]);
     }
     
@@ -175,6 +186,7 @@ foreach ($pages as $page) {
     if ($contextLabel=getContext($pageText)) {       
         // generate context id and save its label
         $context = strToAgcomId($contextLabel). '_programma';
+        $labels[$context]=$contextLabel;
         
         // find data in page
         $i=0;

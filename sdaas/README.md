@@ -103,11 +103,12 @@ The metrics [tvi](axioms/025_compute_tvi.sparql_update), [bwi](axioms/025_comput
 
 knowledge base build process requires to:
 
-- edit files in the *data* directory
-- develop the *gateways* for transforming web resources in linked data. See [gateways doc.](gateways/README.md)
-- write *axioms* and rules to generate new data. See [axioms doc.](axioms/README.md)
-- edit the *build script* that drives the data ingestion process.
+- if needed, edit files in the *data* directory adding known linked data about facts.
+-  if needed, develop the *gateways* for transforming web resources in linked data. See [gateways doc.](gateways/README.md)
+-  if needed, write new *axioms* and rules to generate new data. See [axioms doc.](axioms/README.md)
+- edit the *build script* that drives the data ingestion process. Add new resources to ingest
 - run sdaas agent
+- query the resulting knowledge base
 
 ### debugging the build script with docker
 

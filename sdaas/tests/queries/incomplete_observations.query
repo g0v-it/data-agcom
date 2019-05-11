@@ -1,0 +1,49 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX qb: <http://purl.org/linked-data/cube#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX dct: <http://purl.org/dc/terms/> 
+PREFIX foaf: <http://xmlns.com/foaf/0.1/> 
+PREFIX interval: <http://reference.data.gov.uk/def/intervals/> 
+PREFIX sdmx-subject: <http://purl.org/linked-data/sdmx/2009/subject#> 
+PREFIX agcom: <https://g0v-it.github.io/ontologies/agcom#> 
+PREFIX resource: <http://agcom.linkeddata.cloud/resource/>
+PREFIX local: <urn:local:agicom:>
+
+SELECT (?observation AS ?incomplete_observations) WHERE {
+
+  ?observation a qb:Observation ;
+	qb:dataSet ?dataset .
+  ?dataset qb:structure agcom:rilevazioni_pluralismo .
+  
+  FILTER NOT EXISTS {
+    ?observation 
+      	  rdfs:label ?rdfsLabel; 
+      	  rdfs:comment ?rdfsComment; 
+          qb:dataSet ?dataset ;
+          agcom:subject ?subject ;
+          agcom:role ?role ;
+          agcom:context ?context ;
+          agcom:speakingTime ?speakingTime ;
+          local:tvi ?tvi ;
+          local:nst ?nst ;
+          local:bwi ?bwi .
+      FILTER( isNumeric(?nst) && ?nst > 0) 
+      FILTER( isNumeric(?bwi) && ?bwi > 0) 
+      FILTER( isNumeric(?tvi) && ?tvi > 0) 
+      FILTER( isNumeric(?speakingTime) && ?speakingTime > 0) 
+	  ?subject a foaf:Person,skos:Concept ;
+	  	skos:inScheme resource:soggetti ; 
+        skos:broader resource:soggetto_individuale ;
+	  	skos:prefLabel ?soggetto . FILTER( lang(?soggetto) = "it") 
+	  ?role a skos:Concept; 
+	  	skos:inScheme resource:soggetti ; 
+        skos:broader [] ;
+	  	skos:prefLabel ?ruolo . FILTER( lang(?ruolo) = "it") 
+	  ?context a skos:Concept; 
+	  	skos:inScheme resource:programmi ;
+	  	skos:prefLabel ?programma . FILTER( lang(?programma) = "it") 
+    }
+ }
