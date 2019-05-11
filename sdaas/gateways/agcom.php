@@ -90,7 +90,7 @@ function strToAgcomId($str) {
     $str = preg_replace('/\+/', 'Piu', $str);
     
     // normalizzazione dei casi speciali noti
-    $signature= strtoupper( preg_replace('/\W/','', $str));
+    $signature= strtoupper( preg_replace('/[\W_]/','', $str));
     if(preg_match('/PIUEUROPA/', $signature))               { $str="PiuEuropa"; }
     elseif( preg_match('/LEGA/', $signature))               { $str="Lega"; }
     elseif( preg_match('/PARTITODEMOCRATICO/', $signature)) { $str="PD"; }
@@ -98,7 +98,7 @@ function strToAgcomId($str) {
     elseif( preg_match('/GOVERNO/', $signature))            { $str="Governo"; }
     elseif( preg_match('/FORZAITALIA/', $signature))        { $str="Forza_Italia"; }
     elseif( preg_match('/FRATELLIDITALIA/', $signature))    { $str="Fratelli_dItalia"; }
-    elseif( preg_match('/CASAPOUND/', $signature))              { $str="Casa_Pound"; }
+    elseif( preg_match('/CASAPOUND/', $signature))          { $str="Casa_Pound"; }
     
     return $str;
 }

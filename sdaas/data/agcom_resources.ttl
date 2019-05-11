@@ -176,7 +176,8 @@ resource:SKYTG24_emittente owl:sameAs <http://www.wikidata.org/entity/Q1174202> 
 resource:ITALIA1_emittente owl:sameAs <http://www.wikidata.org/entity/Q536346> .
 resource:TGCOM24_emittente owl:sameAs <http://www.wikidata.org/entity/Q3979545> .
 
-
+#  -----------Manually validated labels ---------------------------
+resource:Lega skos:prefLabel "Lega - Salvini Premier"@it .
 
 # -----------Manually validated pictures ---------------------------
 resource:Tria_Giovanni foaf:img <https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Giovanni_Tria_and_Giorgio_Napolitano_2012_%28cropped%29.jpg/255px-Giovanni_Tria_and_Giorgio_Napolitano_2012_%28cropped%29.jpg> .
