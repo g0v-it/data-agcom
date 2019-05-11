@@ -82,19 +82,24 @@ function normalizeLabel($label) {
  * that is expected to be defined in the agcom:soggetti taxonomy
  */
 function strToAgcomId($str) {
+    // Normalizzazione standard
     $str = trim($str);
     $str = preg_replace('/[[:^print:]]/', '', $str); 
     $str = str_replace([' ', "'", "\t", '(', ')'], ' ', $str);
     $str = preg_replace('/\s+/', '_', $str);
+    $str = preg_replace('/\+/', 'Piu', $str);
     
-    // casi speciali
-    $str = str_replace('+_Europa', 'PiuEuropa', $str);
-    $str = str_replace('+Europa', 'PiuEuropa', $str);
-    $str = str_replace('Governo/_Ministri/_Sottosegretari', 'Governo', $str);
-    $str = str_replace('Fratelli_d_Italia', 'Fratelli_dItalia', $str);
-    $str = str_replace('Partito_Democratico', 'PD', $str);
-    $str = str_replace('Movimento_5_Stelle', 'M5S', $str);
-    $str = str_replace('Lega_Nord', 'Lega', $str);
+    // normalizzazione dei casi speciali noti
+    $signature= strtoupper( preg_replace('/\W/','', $str));
+    if(preg_match('/PIUEUROPA/', $signature))               { $str="PiuEuropa"; }
+    elseif( preg_match('/LEGA/', $signature))               { $str="Lega"; }
+    elseif( preg_match('/PARTITODEMOCRATICO/', $signature)) { $str="PD"; }
+    elseif( preg_match('/5STELLE/', $signature))            { $str="M5S"; }
+    elseif( preg_match('/GOVERNO/', $signature))            { $str="Governo"; }
+    elseif( preg_match('/FORZAITALIA/', $signature))        { $str="Forza_Italia"; }
+    elseif( preg_match('/FRATELLIDITALIA/', $signature))    { $str="Fratelli_dItalia"; }
+    elseif( preg_match('/CASAPOUND/', $signature))              { $str="Casa_Pound"; }
+    
     return $str;
 }
 

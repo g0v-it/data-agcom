@@ -137,6 +137,10 @@ resource:Castaldo_Fabio_Massimo owl:sameAs <http://www.wikidata.org/entity/Q1726
 resource:Siri_Armando owl:sameAs <http://www.wikidata.org/entity/Q52419110> .
 resource:Adinolfi_Mario owl:sameAs <http://www.wikidata.org/entity/Q3848255> .
 resource:Della_Vedova_Benedetto owl:sameAs <http://www.wikidata.org/entity/Q2248530> .
+resource:Ciocca_Angelo owl:sameAs <http://www.wikidata.org/entity/Q24951518> .
+resource:Monti_Mario owl:sameAs <http://www.wikidata.org/entity/Q47904> .
+resource:Giarrusso_Dino owl:sameAs <http://www.wikidata.org/entity/Q50221206> .
+
 
 
 resource:Forza_Italia owl:sameAs <http://www.wikidata.org/entity/Q14924303> .
@@ -146,7 +150,7 @@ resource:Liberi_e_Uguali owl:sameAs <http://www.wikidata.org/entity/Q44929224> .
 resource:M5S owl:sameAs <http://www.wikidata.org/entity/Q47817> .
 resource:PD owl:sameAs <http://www.wikidata.org/entity/Q47729> .
 resource:Per_le_Autonomie-Minoranze_linguistiche owl:sameAs <http://www.wikidata.org/entity/Q12857400> .
-resource:PiuEuropa_Centro_Democratico owl:sameAs <http://www.wikidata.org/entity/Q47090559> .
+resource:PiuEuropa owl:sameAs <http://www.wikidata.org/entity/Q47090559> .
 
 resource:Governo owl:sameAs <http://www.wikidata.org/entity/Q3773971> .
 resource:Presidente_del_Consiglio owl:sameAs <http://www.wikidata.org/entity/Q796897> .
@@ -178,3 +182,4 @@ resource:TGCOM24_emittente owl:sameAs <http://www.wikidata.org/entity/Q3979545> 
 resource:Tria_Giovanni foaf:img <https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Giovanni_Tria_and_Giorgio_Napolitano_2012_%28cropped%29.jpg/255px-Giovanni_Tria_and_Giorgio_Napolitano_2012_%28cropped%29.jpg> .
 resource:Cicchitto_Fabrizio foaf:img <https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Fabrizio_Cicchitto_a_Campi_S._%28LE%29.JPG/255px-Fabrizio_Cicchitto_a_Campi_S._%28LE%29.JPG> .
 resource:Borghi_Aquilini_Claudio foaf:img <https://upload.wikimedia.org/wikipedia/commons/2/24/Claudio_Borghi_daticamera_2018.jpg> .
+resource:Corrao_Ignazio foaf:img <https://upload.wikimedia.org/wikipedia/commons/7/78/IgnazioCorrao4.jpg> .
