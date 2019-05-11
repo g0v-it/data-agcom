@@ -227,6 +227,6 @@ resource:{$id}_p${pageCount}_r${riga} a qb:Observation;
 
 
 // Serializza le labels associate ai concetti
-echo "\n\n# Concept labels: \n\n";
-foreach( $labels as $token => $label) echo "resource:${token} skos:prefLabel \"$label\"@it .\n";
+#echo "\n\n# Concept labels: \n\n";
+#foreach( $labels as $token => $label) echo "resource:${token} skos:prefLabel \"$label\"@it .\n";
 
