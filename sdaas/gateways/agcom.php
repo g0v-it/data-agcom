@@ -134,7 +134,7 @@ function getContext($pageText) {
     
     
     // Formato usato nel report 14509260/Dati+monitoraggio+24-04-2019+1556130645484 extra tg
-    elseif (preg_match( "/^Ranking programmi Extra - Tg di Testata\s+(.+):/",$pageText[0], $matches)) {
+    elseif (preg_match( "/^Ranking\s+programmi\s+Extra\s+-\s+Tg\s+di\s+Testata\s+(.+):/",$pageText[0], $matches)) {
         $extraTg = true ;
         $context = preg_replace('/\s+/', '', $matches[1]);
     }
