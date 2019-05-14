@@ -9,9 +9,7 @@ The knowledge base is compliant with RDF and Semantic Web Specification.
 
 Applications can access the knowledge graph through a SPARQL interface.
 
-**Reference implementations: TBD**
-
-** N.B. not yet working **
+**Reference implementations:**
 
 - **SPARQL endpoint**: https://data.agcom.g0v.it/sparql
 - **Linked Data browser**: http://data.agcom.g0v.it/welcome 
@@ -81,9 +79,10 @@ For answers, you may not find in here or in the Wiki, avoid posting issues. Feel
 ## Credits
 
 - the Smart Data Management Platform was developed by [LinkedData.Center](http://LinkedData.Center/)
-- the ontologies were developed by Enrico Fagnoni @ LinkedData.Center
+- the ontologies were developed by Enrico Fagnoni @ [LinkedData.Center](http://LinkedData.Center/)
 - the RDF data store and the SPARQL endpoint is based on the [Blazegraph community edition](https://www.blazegraph.com/)
 - The URI dereferencing platform is derived from the [LODView project](https://github.com/dvcama/LodView)
+- TV Audience data analysis was developed thanks to **Studio Frasi** (@StudioFrasi)
 
 The online service and the reference implementation is hosted by the [Copernicani community](https://copernicani.it/).
 
