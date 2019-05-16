@@ -49,12 +49,12 @@ Provides pictures and descriptions about persons, TV shows, networks and editors
 
 ### Linked Open Data from UK services
 
-The great [UK reference linked data](http://reference.data.gov.uk/) are used to formally describe observation periods
+The [UK reference linked data resources](http://reference.data.gov.uk/) are used to formally describe observation periods
 
 ### LODMAP data visualization application configuration
 
 The [LODMAP Bubble Graph Ontology](https://github.com/linkeddatacenter/LODMAP-ontologies/tree/master/v1/bgo) 
-is used to describe the graphical objects that represent the presence of politics in TV.
+is used to describe the graphical objects that represent the presence of politicians in TV.
   
 Configuration data are contained in [data/agcom-strings.json file](data/agcom-strings.json) and  [data/g0v_app.ttl file](data/0v_app.ttl). Configuration information are intended to be used with any [LODMAP-2D compliant application](https://it.linkeddata.center/p/lodmap2d) such as [g0v.it web-budget](https://github.com/g0v-it/web-budget)
 
@@ -104,8 +104,8 @@ The metrics [tvi](axioms/025_compute_tvi.sparql_update), [bwi](axioms/025_comput
 knowledge base build process requires to:
 
 - if needed, edit files in the *data* directory adding known linked data about facts.
--  if needed, develop the *gateways* for transforming web resources in linked data. See [gateways doc.](gateways/README.md)
--  if needed, write new *axioms* and rules to generate new data. See [axioms doc.](axioms/README.md)
+- if needed, develop the *gateways* for transforming web resources in linked data. See [gateways doc.](gateways/README.md)
+- if needed, write new *axioms* and rules to generate new data. See [axioms doc.](axioms/README.md)
 - edit the *build script* that drives the data ingestion process. Add new resources to ingest
 - run sdaas agent
 - query the resulting knowledge base
