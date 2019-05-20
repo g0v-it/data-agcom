@@ -9,7 +9,7 @@
 
 
 <accounts#bubbleGraph> a bgo:BubbleGraph ;
-	dct:description "La dimensione di ogni bolla è proporzionale al numero di frasi ascoltate giornalmente dagli spettatori di uno specifico programma televisivo e pronunciate da persone con un ruolo politico o istituzionale."@it ;
+	dct:description "La dimensione di ogni bolla è proporzionale al numero di frasi ascoltate giornalmente dagli spettatori di uno specifico programma televisivo e pronunciate da persone con un ruolo politico o istituzionale. Analisi audience in collaborazione con Studio Frasi"@it ;
 	bgo:um "TV impressions";
     bgo:partitionScheme 
         <accounts#default> ,

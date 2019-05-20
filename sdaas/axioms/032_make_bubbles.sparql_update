@@ -57,11 +57,11 @@ WHERE {
 	?role skos:prefLabel ?roleLabel .
 	?context skos:prefLabel ?contextLabel .
 	
-	# Il titolo della bolla è la prefLabel del soggetto della rilevazione e il suo ruolo.
-	BIND( CONCAT(?subjectLabel," (",?roleLabel,")") AS ?title)
+	# Il titolo della bolla è la prefLabel del soggetto della rilevazione il suo ruolo eil contesto.
+	BIND( CONCAT(?subjectLabel," (",?roleLabel,")", " a ", ?contextLabel) AS ?title)
 	
 	# Il subject  la prefLabel del contesto 
-	BIND( CONCAT(?contextLabel, " - ", ?version) AS ?description)
+	BIND(?version AS ?description)
 	
 	# Il background è l'immagine del politico che parla (se c'e')
 	OPTIONAL { ?subject foaf:img ?background } 
