@@ -178,6 +178,26 @@ resource:TGCOM24_emittente owl:sameAs <http://www.wikidata.org/entity/Q3979545> 
 
 #  -----------Manually validated labels ---------------------------
 resource:Lega skos:prefLabel "Lega - Salvini Premier"@it .
+resource:TG1_programma skos:prefLabel "TG 1"@it .
+resource:TG2_programma skos:prefLabel "TG 2"@it .
+resource:TG3_programma skos:prefLabel "TG 3"@it .
+resource:TG4_programma skos:prefLabel "TG 4"@it .
+resource:TG5_programma skos:prefLabel "TG 5"@it .
+resource:STUDIOAPERTO_programma skos:prefLabel "Studio Aperto"@it .
+resource:TGCOM24_programma skos:prefLabel "TgCom24"@it .
+resource:TGCOM24-extra_tg_programma skos:prefLabel "programmi di approfondimento su TgCom24"@it .
+resource:CANALE5-extra_tg_programma skos:prefLabel "programmi di approfondimento su Canale 5"@it .
+resource:ITALIA1-extra_tg_programma skos:prefLabel "programmi di approfondimento su Italia 1"@it .
+resource:TGLA7_programma skos:prefLabel "TG La7"@it .
+resource:LA7-extra_tg_programma skos:prefLabel "programmi di approfondimento su La7"@it .
+resource:RAI1-extra_tg_programma skos:prefLabel "programmi di approfondimento su RAI 1"@it .
+resource:RAI2-extra_tg_programma skos:prefLabel "programmi di approfondimento su RAI 2"@it .
+resource:RAI3-extra_tg_programma skos:prefLabel "programmi di approfondimento su RAI 3"@it .
+resource:RAINEWS_programma skos:prefLabel "TG RaiNews"@it .
+resource:RAINEWS-extra_tg_programma skos:prefLabel "programmi di approfondimento su RaiNews24"@it .
+resource:RETE4-extra_tg_programma skos:prefLabel "programmi di approfondimento su Rete 4"@it .
+resource:SKYTG24_programma skos:prefLabel "SkyTg24"@it .
+resource:SKYTG24-extra_tg_programma skos:prefLabel "programmi di approfondimento su Sky"@it .
 
 # -----------Manually validated pictures ---------------------------
 resource:Tria_Giovanni foaf:img <https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Giovanni_Tria_and_Giorgio_Napolitano_2012_%28cropped%29.jpg/255px-Giovanni_Tria_and_Giorgio_Napolitano_2012_%28cropped%29.jpg> .
