@@ -140,7 +140,10 @@ resource:Della_Vedova_Benedetto owl:sameAs <http://www.wikidata.org/entity/Q2248
 resource:Ciocca_Angelo owl:sameAs <http://www.wikidata.org/entity/Q24951518> .
 resource:Monti_Mario owl:sameAs <http://www.wikidata.org/entity/Q47904> .
 resource:Giarrusso_Dino owl:sameAs <http://www.wikidata.org/entity/Q50221206> .
-
+resource:Bernini_Anna_Maria owl:sameAs <http://www.wikidata.org/entity/Q2850556> .
+resource:Ferrara_Laura owl:sameAs <http://www.wikidata.org/entity/Q17152507> .
+resource:Moretti_Alessandra owl:sameAs <http://www.wikidata.org/entity/Q15055614> .
+resource:Toti_Giovanni owl:sameAs <http://www.wikidata.org/entity/Q3768253> .
 
 
 resource:Forza_Italia owl:sameAs <http://www.wikidata.org/entity/Q14924303> .
@@ -204,3 +207,7 @@ resource:Tria_Giovanni foaf:img <https://upload.wikimedia.org/wikipedia/commons/
 resource:Cicchitto_Fabrizio foaf:img <https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Fabrizio_Cicchitto_a_Campi_S._%28LE%29.JPG/255px-Fabrizio_Cicchitto_a_Campi_S._%28LE%29.JPG> .
 resource:Borghi_Aquilini_Claudio foaf:img <https://upload.wikimedia.org/wikipedia/commons/2/24/Claudio_Borghi_daticamera_2018.jpg> .
 resource:Corrao_Ignazio foaf:img <https://upload.wikimedia.org/wikipedia/commons/7/78/IgnazioCorrao4.jpg> .
+resource:Ciocca_Angelo foaf:img <https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/AngeloCiocca.png/255px-AngeloCiocca.png> .
+resource:Bernini_Anna_Maria foaf:img <https://upload.wikimedia.org/wikipedia/commons/f/f2/Anna_Maria_Bernini_datisenato_2018.jpg> .
+resource:Giarrusso_Dino foaf:img  <https://upload.wikimedia.org/wikipedia/commons//thumb/f/f0/20180413_IJF_Perugia_Dino_Giarrusso.jpg/255px-20180413_IJF_Perugia_Dino_Giarrusso.jpg> .
+resource:Gasparri_Maurizio foaf:img <https://upload.wikimedia.org/wikipedia/commons/8/87/Murizio_Gasparri_datisenato_2018.jpg> .
