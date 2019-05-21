@@ -15,7 +15,7 @@
 @prefix resource: <http://agcom.linkeddata.cloud/resource/> .
 	
 resource:welcome a kees:KnowledgeBase;
-    void:sparqlEndpoint <http://data.agcom.g0v.it/sdaas/sparql> ;
+    void:sparqlEndpoint <https://data.agcom.g0v.it/sparql> ;
 	dct:title "data.agcom.g0v.it knowledge base"@it; 
 	dct:description "Contiene la conoscenza sulle presenze di soggetti politici e istituzionali nelle principali reti televisive."@it;
     dct:license <https://creativecommons.org/licenses/by/3.0/>;
