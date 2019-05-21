@@ -16,7 +16,7 @@ partition4 = "p4_editore" ;
 //const http = require('http'),
 
 const {URL} = require('url'),
-csv = require('csvtojson'),
+csv = require('csvjson'),
 zip = require('lz-string'),
 querystring = require('querystring');
 
@@ -133,7 +133,10 @@ function getQueryResult(endpoint, query, format = DEFAULT_ACCEPT){
 async function buildJsonFilter(data, group){
 	return new Promise(async (resolve, reject) =>{
 		try{
-			let output, result = await csv().fromString(data);
+			let output, result = await csv.toObject(data, {
+				delimiter : ',',
+  				quote     : '"'
+			});
 			
 			output = {};
 			result.map(d => {
