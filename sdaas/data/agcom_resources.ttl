@@ -145,7 +145,6 @@ resource:Ferrara_Laura owl:sameAs <http://www.wikidata.org/entity/Q17152507> .
 resource:Moretti_Alessandra owl:sameAs <http://www.wikidata.org/entity/Q15055614> .
 resource:Toti_Giovanni owl:sameAs <http://www.wikidata.org/entity/Q3768253> .
 
-
 resource:Forza_Italia owl:sameAs <http://www.wikidata.org/entity/Q14924303> .
 resource:Fratelli_dItalia owl:sameAs <http://www.wikidata.org/entity/Q1757843> .
 resource:Lega owl:sameAs <http://www.wikidata.org/entity/Q47750> .
@@ -211,3 +210,4 @@ resource:Ciocca_Angelo foaf:img <https://upload.wikimedia.org/wikipedia/commons/
 resource:Bernini_Anna_Maria foaf:img <https://upload.wikimedia.org/wikipedia/commons/f/f2/Anna_Maria_Bernini_datisenato_2018.jpg> .
 resource:Giarrusso_Dino foaf:img  <https://upload.wikimedia.org/wikipedia/commons//thumb/f/f0/20180413_IJF_Perugia_Dino_Giarrusso.jpg/255px-20180413_IJF_Perugia_Dino_Giarrusso.jpg> .
 resource:Gasparri_Maurizio foaf:img <https://upload.wikimedia.org/wikipedia/commons/8/87/Murizio_Gasparri_datisenato_2018.jpg> .
+resource:Toti_Giovanni foaf:img <https://upload.wikimedia.org/wikipedia/commons/0/03/Giovanni_Toti.jpg> .
