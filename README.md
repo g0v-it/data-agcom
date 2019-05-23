@@ -1,6 +1,6 @@
 ![copernicani](doc/copernicani-logo.png)
 
-# g0v data-agicom
+# g0v data-agcom
 
 A *Smart Data Management Platform* to store information about
 pluralism on television based on the data published by AGCOM (Agenzia per le Garanzie nelle Comunicazioni).
