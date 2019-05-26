@@ -114,7 +114,6 @@ e.g. https://data.agcom.g0v.it/ldp/accounts
 
 returns data a bubble detail with history:
 
-e.g. https://data.agcom.g0v.it/ldp/account/0fa5d2ef6e58270313c9d4f082871b65
 
 ```json
 {  
