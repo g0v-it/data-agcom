@@ -2,7 +2,7 @@
 
 ----------------
 >
-> **WARNING: this project is now obsolete. AGCOM decided to publish pluralism data with an OPEN DATA LICENSE**
+> **WARNING: this project is now pending. AGCOM decided to publish pluralism data with an OPEN DATA LICENSE**
 > see the [press release](https://www.agcom.it/documentazione/documento?p_p_auth=fLw7zRht&p_p_id=101_INSTANCE_FnOw5lVOIXoE&p_p_lifecycle=0&p_p_col_id=column-1&p_p_col_count=1&_101_INSTANCE_FnOw5lVOIXoE_struts_action=%2Fasset_publisher%2Fview_content&_101_INSTANCE_FnOw5lVOIXoE_assetEntryId=21435119&_101_INSTANCE_FnOw5lVOIXoE_type=document)
 > ** The the g0v team and LinkedData.Center are trying to learn more about the new data organization. Stay tuned.
 >
